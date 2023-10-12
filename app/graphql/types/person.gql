@@ -1,8 +1,8 @@
-type PersonResponse {
+type Person {
     firstName: String!
     surname: String!
 }
 
 extend type Query {
-    Person(personId: Int!): PersonResponse!
+    Person(personId: Int!): Person!
 }

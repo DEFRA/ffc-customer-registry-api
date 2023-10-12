@@ -1,13 +1,8 @@
-function Person (firstName, surname) {
-  this.firstName = firstName
-  this.surname = surname
+const person = {
+  firstName: 'John',
+  surname: 'Doe'
 }
 
-Person.prototype.toJSON = function () {
-  return {
-    firstName: this.firstName,
-    surname: this.surname,
-  }
+module.exports = {
+  person,
 }
-
-module.exports = Person
