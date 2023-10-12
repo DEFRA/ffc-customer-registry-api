@@ -17,8 +17,11 @@
   "contributors": [],
   "license": "OGL-UK-3.0",
   "dependencies": {
+    "@apollo/server": "^4.9.4",
+    "@as-integrations/hapi": "^2.0.1",
     "@hapi/hapi": "21.3.2",
-    "applicationinsights": "2.8.0"
+    "applicationinsights": "2.8.0",
+    "graphql": "^16.8.1"
   },
   "devDependencies": {
     "jest": "29.7.0",
