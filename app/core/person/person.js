@@ -11,4 +11,3 @@ Person.prototype.toJSON = function () {
 }
 
 module.exports = Person
-
