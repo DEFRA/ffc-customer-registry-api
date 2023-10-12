@@ -26,8 +26,6 @@ const server = Hapi.server({
   port: process.env.PORT
 })
 
-
-
 const routes = [].concat(
   require('./routes/healthy'),
   require('./routes/healthz')
