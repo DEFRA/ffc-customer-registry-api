@@ -1,1 +1,1 @@
-export default `type Query`
+module.exports =`type Query`

@@ -1,18 +1,18 @@
-import { join } from 'path'
+const path = require('path')
 
 require('./insights').setup()
 const Hapi = require('@hapi/hapi')
-import { ApolloServer } from '@apollo/server';
-import hapiApollo from '@as-integrations/hapi';
-import { loadFilesSync } from '@graphql-tools/load-files'
+const  ApolloServer = require('@apollo/server');
+const hapiApollo = require('@as-integrations/hapi');
+const graphql =  require('@graphql-tools/load-files')
 
-const apolloServer = new ApolloServer({
-  typeDefs: loadFilesSync(
-    join(__dirname, 'graphql', 'types'),
+const apolloServer = new ApolloServer.ApolloServer({
+  typeDefs: graphql.loadFilesSync(
+    path.join(__dirname, 'graphql', 'types'),
     { recursive: true }
   ),
-  resolvers: loadFilesSync(
-    join(__dirname, 'graphql', 'resolvers'),
+  resolvers: graphql.loadFilesSync(
+    path.join(__dirname, 'graphql', 'resolvers'),
     { recursive: true }
   ),
 });
