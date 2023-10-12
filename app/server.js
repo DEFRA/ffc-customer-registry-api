@@ -9,9 +9,7 @@ const { ApolloServerPluginLandingPageLocalDefault } = require("@apollo/server/pl
 
 const typeDefs = graphql.loadFilesSync(
   path.join(__dirname, 'graphql', 'types'),
-  {
-    recursive: true,
-  }
+  { recursive: true }
 )
 
 const resolvers = graphql.loadFilesSync(
