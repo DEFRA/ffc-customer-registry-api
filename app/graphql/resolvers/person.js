@@ -1,7 +1,7 @@
-const { personHandler } = require('../../core/person/person')
+import { personHandler } from '../../core/person/person.js'
 
-module.exports = {
+export default {
   Query: {
-    Person: personHandler
+    person: personHandler
   }
 }
