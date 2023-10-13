@@ -1,12 +1,4 @@
-const { person } = require('../../core/person/person')
-
-function personHandler(parent, args, context) {
-    console.log('parent', parent)
-    console.log('args', args)
-    console.log('context', context)
-
-    return person
-}
+const { personHandler } = require('../../core/person/person')
 
 module.exports = {
     Query: {
