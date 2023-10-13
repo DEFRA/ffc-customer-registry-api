@@ -3,7 +3,7 @@ const person = {
   surname: 'Doe'
 }
 
-function personHandler(parent, args, context) {
+function personHandler (parent, args, context) {
   console.log('parent', parent)
   console.log('args', args)
   console.log('context', context)
@@ -12,5 +12,5 @@ function personHandler(parent, args, context) {
 }
 
 module.exports = {
-  personHandler,
+  personHandler
 }
