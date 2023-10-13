@@ -29,7 +29,8 @@ const apolloServer = new ApolloServer.ApolloServer({
       return ApolloServerPluginLandingPageLocalDefault()
     })(),
   ],
-});
+}, '');
+
 
 const server = Hapi.server({
   port: process.env.PORT
