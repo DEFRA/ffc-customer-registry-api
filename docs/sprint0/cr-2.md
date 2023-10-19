@@ -12,7 +12,7 @@ Created a new query resolver to retrieve mocked data model for Organisation insi
 __Query__
 ```graphql
 query Organisation($organisationId: ID!) {
-    Organisation(personId: $organisationId) {
+    Organisation(organisationId: $organisationId) {
         name
         sbi
     }
