@@ -18,7 +18,6 @@ query Person($personId: ID!) {
         }
     }
 }
-
 ```
 
 __Variables__

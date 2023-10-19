@@ -15,7 +15,6 @@ Content-Type: application/json
 
 __Payload:__
 ```json
-
 {
     "query": "query Person($personId: ID!) {Person(personId: $personId) {authorizationQuestions{memorableDate}}}",
     "variables": {
@@ -26,7 +25,6 @@ __Payload:__
 
 __Payload:__
 ```json
-
 {
     "query": "query Organisation($organisationId: ID!) {Organisation(organisationId: $organisationId) {persons {AuthorisationQuestions { memorableDate }}}}",
     "variables": {
