@@ -15,6 +15,12 @@ query Organisation($organisationId: ID!) {
     Organisation(organisationId: $organisationId) {
         name
         sbi
+        persons {
+            AuthorisationQuestions {
+                memorableDate
+                memorable...
+            }
+        }
     }
 }
 

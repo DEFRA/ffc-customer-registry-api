@@ -17,7 +17,7 @@ __Payload:__
 ```json
 
 {
-    "query": "query Person($personId: ID!) {Person(personId: $personId) {authorizationQuestions}}",
+    "query": "query Person($personId: ID!) {Person(personId: $personId) {authorizationQuestions{memorableDate}}}",
     "variables": {
         "personId": 131431
     }
@@ -28,7 +28,7 @@ __Payload:__
 ```json
 
 {
-    "query": "query Organisation($organisationId: ID!) {Organisation(organisationId: $organisationId) {persons}}",
+    "query": "query Organisation($organisationId: ID!) {Organisation(organisationId: $organisationId) {persons {AuthorisationQuestions { memorableDate }}}}",
     "variables": {
         "organisationId": 11232
     }
