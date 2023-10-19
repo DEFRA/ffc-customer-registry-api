@@ -56,7 +56,7 @@ type Person {
     middleName: String!
     lastName: String!
     ...
-    AuthorizationQuestions: AuthorisationQuestions
+    AuthorisationQuestions: AuthorisationQuestions
 }
 ```
 
