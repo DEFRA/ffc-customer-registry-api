@@ -2,7 +2,9 @@ import { ApolloServer } from '@apollo/server'
 import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled'
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default'
 import { dirname, join } from 'path'
-import { loadFilesSync } from '@graphql-tools/load-files'
+import { loadFiles, loadFilesSync } from '@graphql-tools/load-files'
+import { mergeResolvers } from '@graphql-tools/merge'
+
 import { pathToFileURL, fileURLToPath } from 'url'
 import hapi from '@hapi/hapi'
 
@@ -18,7 +20,7 @@ const typeDefs = loadFilesSync(join(__dirname, 'graphql', 'types'), {
   recursive: true
 })
 
-const resolvers = loadFilesSync(join(__dirname, 'graphql', 'resolvers'), {
+const resolvers = await loadFiles(join(__dirname, 'graphql', 'resolvers'), {
   recursive: true,
   requireMethod: async path => import(pathToFileURL(path))
 })

@@ -1,0 +1,12 @@
+type customer {
+    firstName: String
+    surname: String
+}
+
+extend type Query {
+    customer(customerId: Int!): customer
+}
+
+extend type Mutation {
+    customer(customerId: Int!): customer
+}
