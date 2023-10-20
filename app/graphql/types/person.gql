@@ -1,8 +1,28 @@
+type PersonName {
+  title: String
+  otherTitle: String
+  first: String
+  middle: String
+  last: String
+}
+
+type PersonStatus {
+  locked: Boolean
+  confirmed: Boolean
+  deactivated: Boolean
+}
+
 type Person {
-    firstName: String!
-    surname: String!
+  id: ID!
+  customerReferenceNumber: String
+  name: PersonName
+  dateOfBirth: Date
+  phone: Phone
+  email: Email
+  status: PersonStatus
+  address: Address
 }
 
 extend type Query {
-    Person(personId: Int!): Person!
+  person(id: ID!): Person
 }
