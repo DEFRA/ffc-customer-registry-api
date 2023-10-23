@@ -1,0 +1,9 @@
+type Demo {
+  graphqlVersion: String!
+  hapiVersion: String!
+  nodeVersion: String!
+}
+
+extend type Query {
+  demo: Demo
+}
