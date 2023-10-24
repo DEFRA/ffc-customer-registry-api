@@ -1,11 +1,9 @@
 import hapiApollo from '@as-integrations/hapi'
 
 import { server } from './server.js'
-import { NewApolloServer } from './graphql/server.js'
+import { apolloServer } from './graphql/server.js'
 
 const init = async () => {
-  const apolloServer = await NewApolloServer()
-
   await apolloServer.start()
   await server.register({
     plugin: hapiApollo.default,
