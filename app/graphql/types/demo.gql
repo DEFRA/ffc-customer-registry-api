@@ -1,7 +1,8 @@
 type Demo {
-  graphqlVersion: String!
-  hapiVersion: String!
-  nodeVersion: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
 }
 
 extend type Query {

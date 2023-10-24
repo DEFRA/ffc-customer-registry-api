@@ -1,22 +1,12 @@
-import { readFile } from 'node:fs/promises'
-
-const demoResolvers = {
+const demoResolver = {
   Query: {
-    async demo () {
-      const { dependencies } = JSON.parse(
-        await readFile(
-          new URL('../../../package.json', import.meta.url),
-          'utf-8'
-        )
-      )
-
-      return {
-        nodeVersion: process.version,
-        graphqlVersion: dependencies.graphql,
-        hapiVersion: dependencies['@hapi/hapi']
-      }
-    }
+    demo: () => ({
+      email: 'resolver email',
+      firstName: 'resolver firstName',
+      lastName: 'resolver lastName',
+      password: 'resolver password'
+    })
   }
 }
 
-export default demoResolvers
+export default demoResolver
