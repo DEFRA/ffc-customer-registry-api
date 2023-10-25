@@ -1,12 +1,22 @@
-type customer {
+type Customer {
     firstName: String
     surname: String
+    memorableDate: String
+    memorableLocation: String
+    memorableEvent: String
+}
+
+input CustomerUpdate {
+    customerReferenceNumber: Int!
+    memorableDate: String
+    memorableLocation: String
+    memorableEvent: String
 }
 
 extend type Query {
-    customer(customerId: Int!): customer
+    Customer(customerReferenceNumber: Int!): Customer
 }
 
 extend type Mutation {
-    customer(customerId: Int!): customer
+    Customer(customer: CustomerUpdate): Customer
 }
