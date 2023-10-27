@@ -23,11 +23,12 @@ export const schema = makeExecutableSchema({
 
 export const schemaWithMocks = addMocksToSchema({
   schema,
-  mocks: mergeResolvers(await getFiles('mocks'))
+  mocks: mergeResolvers(await getFiles('mocks')),
+  preserveResolvers: process.env.MOCK_LEVEL === 'partial'
 })
 
 export const apolloServer = new ApolloServer({
-  schema: schemaWithMocks,
+  schema: process.env.MOCK_LEVEL ? schemaWithMocks : schema,
   plugins: [
     (() => {
       if (process.env?.NODE_ENV === 'production') {
