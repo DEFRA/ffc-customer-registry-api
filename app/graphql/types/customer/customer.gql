@@ -12,7 +12,7 @@ type CustomerStatus {
   deactivated: Boolean
 }
 
-type AuthenticationQuestions {
+type CustomerAuthenticationQuestions {
   memorableDate: String!
   memorableEvent: String!
   memorablePlace: String!
@@ -26,5 +26,5 @@ type Customer {
   email: Email
   status: CustomerStatus
   address: Address
-  authenticationQuestions: AuthenticationQuestions
+  authenticationQuestions: CustomerAuthenticationQuestions
 }
