@@ -14,8 +14,8 @@
     "start:dev": "nodemon --ext js,gql app/index.js",
     "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js",
     "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js",
-    "gql:lint": "eslint app/graphql/types && npx prettier --check app/graphql/types/**/*.gql",
-    "gql:fmt": "npx prettier --write app/graphql/types/**/*.gql"
+    "gql:lint": "eslint app/graphql/types && npx prettier 'app/graphql/types/**/*.gql' --check",
+    "gql:format": "npx prettier 'app/graphql/types/**/*.gql' --write"
   },
   "author": "Defra",
   "contributors": [],
