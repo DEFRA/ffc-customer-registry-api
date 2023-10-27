@@ -1,4 +1,4 @@
-import { fakerEN_GB as faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en_GB'
 
 export const Phone = () => ({
   mobile: faker.phone.number(),
@@ -8,7 +8,7 @@ export const Phone = () => ({
 
 export const Email = () => ({
   address: faker.internet.email(),
-  validate: faker.datatype.boolean(),
+  validated: faker.datatype.boolean(),
   doNotContact: faker.datatype.boolean()
 })
 

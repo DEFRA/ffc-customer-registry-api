@@ -1,4 +1,4 @@
-import { fakerEN_GB as faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/en_GB'
 
 export const CustomerName = () => ({
   title: faker.person.prefix(),

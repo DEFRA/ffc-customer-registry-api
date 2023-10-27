@@ -1,5 +1,5 @@
 import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
 
 import { addMocksToSchema } from '@graphql-tools/mock'
 import { ApolloServer } from '@apollo/server'
@@ -9,21 +9,25 @@ import { loadFiles } from '@graphql-tools/load-files'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { mergeResolvers } from '@graphql-tools/merge'
 
-const graphqlPath = dirname(fileURLToPath(import.meta.url))
+async function getFiles (path) {
+  return loadFiles(join(dirname(fileURLToPath(import.meta.url)), path), {
+    recursive: true,
+    requireMethod: async path => import(pathToFileURL(path))
+  })
+}
 
 export const schema = makeExecutableSchema({
-  typeDefs: await loadFiles(join(graphqlPath, 'types')),
-  resolvers: await loadFiles(join(graphqlPath, 'resolvers')),
-  resolverValidationOptions: {
-    requireResolversForArgs: 'error',
-    requireResolversForAllField: 'error',
-    requireResolversForResolveType: 'error',
-    requireResolversToMatchSchema: 'error'
-  }
+  typeDefs: await getFiles('types'),
+  resolvers: mergeResolvers(await getFiles('resolvers'))
 })
 
-const config = {
+export const schemaWithMocks = addMocksToSchema({
   schema,
+  mocks: mergeResolvers(await getFiles('mocks'))
+})
+
+export const apolloServer = new ApolloServer({
+  schema: schemaWithMocks,
   plugins: [
     (() => {
       if (process.env?.NODE_ENV === 'production') {
@@ -33,20 +37,4 @@ const config = {
       return ApolloServerPluginLandingPageLocalDefault()
     })()
   ]
-}
-
-if (process.env.MOCK_LEVEL) {
-  if (
-    !(process.env.MOCK_LEVEL === 'partial' || process.env.MOCK_LEVEL === 'full')
-  ) {
-    throw new Error('MOCK_LEVEL should be either "partial" or "full"')
-  }
-
-  config.schema = addMocksToSchema({
-    schema,
-    mocks: mergeResolvers(await loadFiles(join(graphqlPath, 'mocks'))),
-    preserveResolvers: process.env.MOCK_LEVEL === 'partial'
-  })
-}
-
-export const apolloServer = new ApolloServer(config)
+})
