@@ -28,5 +28,5 @@ type Address {
     uprn: String
     dependentLocality: String
     doubleDependentLocality: String
-    addressTypeId: String
+    typeId: String
 }

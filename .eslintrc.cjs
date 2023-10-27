@@ -1,8 +1,7 @@
 module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
-    schema: './app/graphql/types/**/*.gql'
+    sourceType: 'module'
   },
   overrides: [
     {

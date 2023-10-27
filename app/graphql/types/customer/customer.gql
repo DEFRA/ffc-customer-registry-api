@@ -1,30 +1,30 @@
 type CustomerName {
-    title: String
-    otherTitle: String
-    first: String
-    middle: String
-    last: String
+  title: String
+  otherTitle: String
+  first: String
+  middle: String
+  last: String
 }
 
 type CustomerStatus {
-    locked: Boolean
-    confirmed: Boolean
-    deactivated: Boolean
+  locked: Boolean
+  confirmed: Boolean
+  deactivated: Boolean
 }
 
 type AuthenticationQuestions {
-    memorableDate: String!
-    memorableEvent: String!
-    memorablePlace: String!
+  memorableDate: String!
+  memorableEvent: String!
+  memorablePlace: String!
 }
 
 type Customer {
-    referenceNumber: String
-    name: CustomerName
-    dateOfBirth: String
-    phone: Phone
-    email: Email
-    status: CustomerStatus
-    address: Address
-    authenticationQuestions: AuthenticationQuestions
+  referenceNumber: String
+  name: CustomerName
+  dateOfBirth: String
+  phone: Phone
+  email: Email
+  status: CustomerStatus
+  address: Address
+  authenticationQuestions: AuthenticationQuestions
 }

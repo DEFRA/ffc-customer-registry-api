@@ -1,6 +1,6 @@
-export function findCustomerByReferenceHandler(referenceNumber) {
+export function findCustomerByReferenceHandler (referenceNumber) {
   return {
-    referenceNumber: referenceNumber,
+    referenceNumber,
     dateOfBirth: '283996800000',
     name: {
       title: 'Mr',
@@ -27,22 +27,22 @@ export function findCustomerByReferenceHandler(referenceNumber) {
       uprn: null,
       dependentLocality: null,
       doubleDependentLocality: null,
-      addressTypeId: null,
+      addressTypeId: null
     },
     phone: {
       mobile: '07821232132',
       landline: '202 4213 13321',
-      fax: null,
+      fax: null
     },
     email: {
       address: 'john.doe@example.com',
       validated: false,
-      doNotContact: false,
+      doNotContact: false
     },
     status: {
       locked: false,
       confirmed: false,
-      deactivated: false,
+      deactivated: false
     },
     authenticationQuestions: {
       memorableDate: '08/01/2023',

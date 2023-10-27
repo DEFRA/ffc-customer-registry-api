@@ -10,11 +10,12 @@
     "test": "jest --runInBand --forceExit",
     "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
     "test:lint": "standard",
-    "test:lint-gql": "eslint app/graphql/types/**/*.gql",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js --coverage=false --onlyChanged --watch --runInBand --no-cache",
     "start:dev": "nodemon --ext js,gql app/index.js",
     "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js",
-    "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js"
+    "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js",
+    "gql:lint": "eslint app/graphql/types && npx prettier --check app/graphql/types/**/*.gql",
+    "gql:fmt": "npx prettier --write app/graphql/types/**/*.gql"
   },
   "author": "Defra",
   "contributors": [],
