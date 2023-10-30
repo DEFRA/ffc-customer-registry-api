@@ -1,3 +1,12 @@
+type CustomerInfo {
+  name: CustomerName
+  dateOfBirth: String
+  phone: Phone
+  email: Email
+  status: CustomerStatus
+  address: Address
+}
+
 type CustomerName {
   title: String
   otherTitle: String
@@ -19,12 +28,7 @@ type CustomerAuthenticationQuestions {
 }
 
 type Customer {
-  referenceNumber: String
-  name: CustomerName
-  dateOfBirth: String
-  phone: Phone
-  email: Email
-  status: CustomerStatus
-  address: Address
-  authenticationQuestions: CustomerAuthenticationQuestions
+  referenceNumber: Int!
+  customerInfo: CustomerInfo
+  customerAuthenticationQuestions: CustomerAuthenticationQuestions
 }
