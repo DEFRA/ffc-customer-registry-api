@@ -3,63 +3,7 @@ import { deepEqual } from 'assert'
 import { graphql } from 'graphql'
 import { faker } from '@faker-js/faker/locale/en_GB'
 
-import { schemaWithMocks as schema } from '../../app/graphql/server.js'
-
-const source = `#graphql
-query CustomerMockTest($referenceNumber: ID!) {
-  customer(referenceNumber: $referenceNumber) {
-    address {
-      buildingName
-      buildingNumberRange
-      city
-      country
-      county
-      dependentLocality
-      doubleDependentLocality
-      flatName
-      line1
-      line2
-      line3
-      line4
-      line5
-      pafOrganisationName
-      postalCode
-      street
-      typeId
-      uprn
-    }
-    authenticationQuestions {
-      memorableDate
-      memorableEvent
-      memorablePlace
-    }
-    dateOfBirth
-    email {
-      address
-      doNotContact
-      validated
-    }
-    name {
-      first
-      last
-      middle
-      otherTitle
-      title
-    }
-    phone {
-      fax
-      landline
-      mobile
-    }
-    referenceNumber
-    status {
-      confirmed
-      deactivated
-      locked
-    }
-  }
-}
-`
+import { schemaWithMocks } from '../../app/graphql/server.js'
 
 describe('Query.customer', () => {
   beforeEach(() => {
@@ -67,72 +11,163 @@ describe('Query.customer', () => {
   })
 
   it('should return customer mock', async () => {
-    deepEqual(
-      await graphql({
-        schema,
-        source,
-        variableValues: {
-          referenceNumber: 'crn'
-        }
-      }),
-      {
-        data: {
-          customer: {
-            address: {
-              buildingName: 'Suite 510',
-              buildingNumberRange: 'Apt. 512',
-              city: 'West Metzdon',
-              country: 'Guadeloupe',
-              county: 'Northern Ireland',
-              dependentLocality: null,
-              doubleDependentLocality: null,
-              flatName: 'Suite 631',
-              line1: '682 Joanne Road',
-              line2: null,
-              line3: null,
-              line4: null,
-              line5: null,
-              pafOrganisationName: null,
-              postalCode: 'PG78 3LS',
-              street: 'Westgate',
-              typeId: null,
-              uprn: null
-            },
-            authenticationQuestions: {
-              memorableDate:
-                'Suscipio xiphias cogito ver alter amiculum ipsam campana cursim vestrum.',
-              memorableEvent:
-                'Caste comparo eaque adimpleo nobis libero quasi uter eveniet xiphias.',
-              memorablePlace:
-                'Aperiam desparatus adnuo tabella temptatio vado triumphus cupiditate ante audax.'
-            },
-            dateOfBirth: '8',
-            email: {
-              address: 'Sierra_Luettgen@gmail.com',
-              doNotContact: false,
-              validated: false
-            },
-            name: {
-              first: 'Cameron',
-              last: 'Bernhard',
-              middle: 'Kyle',
-              otherTitle: 'Mrs.',
-              title: 'Miss'
-            },
-            phone: {
-              fax: '016977 4966',
-              landline: '01261 067502',
-              mobile: '01449 09397'
-            },
-            referenceNumber: 'N5CTZ0CKL9',
-            status: {
-              confirmed: true,
-              deactivated: false,
-              locked: true
+    const result = await graphql({
+      source: `#graphql
+        query TestCustomer($referenceNumber: ID!) {
+          customer(referenceNumber: $referenceNumber) {
+            referenceNumber
+            info {
+              status {
+                locked
+                deactivated
+                confirmed
+              }
+              phone {
+                mobile
+                landline
+                fax
+              }
+              name {
+                first
+                last
+                middle
+                otherTitle
+                title
+              }
+              email {
+                address
+                doNotContact
+                validated
+              }
+              dateOfBirth
+              address {
+                buildingName
+                buildingNumberRange
+                city
+                country
+                county
+                dependentLocality
+                doubleDependentLocality
+                flatName
+                line1
+                line3
+                line2
+                line4
+                line5
+                pafOrganisationName
+                postalCode
+                street
+                typeId
+                uprn
+              }
+            }
+            authenticationQuestions {
+              memorableDate
+              memorableEvent
+              memorablePlace
             }
           }
         }
+      `,
+      variableValues: {
+        referenceNumber: 'crn'
+      },
+      schema: schemaWithMocks
+    })
+
+    deepEqual(result, {
+      data: {
+        customer: {
+          referenceNumber: 'N5CTZ0CKL9',
+          info: {
+            status: { locked: true, deactivated: false, confirmed: false },
+            phone: {
+              mobile: '019631 79025',
+              landline: '0114 562 7834',
+              fax: '0932 226 4907'
+            },
+            name: {
+              first: 'Yvette',
+              last: 'Gutkowski-Upton',
+              middle: 'Quinn',
+              otherTitle: 'Mr.',
+              title: 'Miss'
+            },
+            email: {
+              address: 'Ben_Feeney25@yahoo.com',
+              doNotContact: false,
+              validated: true
+            },
+            dateOfBirth: '1',
+            address: {
+              buildingName: 'Apt. 778',
+              buildingNumberRange: 'Suite 815',
+              city: 'Legros-upon-Kihn',
+              country: 'Iceland',
+              county: 'Wales',
+              dependentLocality: null,
+              doubleDependentLocality: null,
+              flatName: 'Suite 411',
+              line1: '66 Nelson Street',
+              line3: null,
+              line2: null,
+              line4: null,
+              line5: null,
+              pafOrganisationName: null,
+              postalCode: 'XW18 6OC',
+              street: 'Church View',
+              typeId: null,
+              uprn: null
+            }
+          },
+          authenticationQuestions: {
+            memorableDate: 'Atrox basium carmen cras soleo architecto.',
+            memorableEvent:
+              'Timidus aegrotatio odio stabilis amita apud autem.',
+            memorablePlace: 'Decimus creber perferendis quia verbera tollo.'
+          }
+        }
       }
-    )
+    })
+  })
+})
+
+describe('Mutation.updateCustomerAuthenticationQuestions', () => {
+  beforeEach(() => {
+    faker.seed(7209369705577748)
+  })
+
+  it('should return CustomerAuthenticationQuestions mock', async () => {
+    const result = await graphql({
+      source: `#graphql
+        mutation TestUpdateCustomerAuthenticationQuestions($input: UpdateCustomerAuthenticationQuestionsInput!) {
+          updateCustomerAuthenticationQuestions(input: $input) {
+            memorableDate
+            memorableEvent
+            memorablePlace
+          }
+        }
+      `,
+      variableValues: {
+        input: {
+          referenceNumber: 'crn',
+          memorableDate: '',
+          memorableEvent: '',
+          memorablePlace: ''
+        }
+      },
+      schema: schemaWithMocks
+    })
+
+    deepEqual(result, {
+      data: {
+        updateCustomerAuthenticationQuestions: {
+          memorableDate:
+            'Ascit conculco tracto voluptates absum consequuntur nemo pecto.',
+          memorableEvent: 'Ustulo beatae provident totidem cito.',
+          memorablePlace: 'Desparatus abduco aduro est.'
+        }
+      }
+    })
   })
 })

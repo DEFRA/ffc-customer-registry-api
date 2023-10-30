@@ -22,7 +22,12 @@ export const CustomerAuthenticationQuestions = () => ({
 
 export const Customer = () => {
   return {
-    referenceNumber: faker.string.alphanumeric({ length: 10, casing: 'upper' }),
+    referenceNumber: faker.string.alphanumeric({ length: 10, casing: 'upper' })
+  }
+}
+
+export const CustomerInfo = () => {
+  return {
     dateOfBirth: faker.string.numeric()
   }
 }

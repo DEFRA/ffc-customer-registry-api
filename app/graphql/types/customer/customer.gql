@@ -28,7 +28,7 @@ type CustomerAuthenticationQuestions {
 }
 
 type Customer {
-  referenceNumber: Int!
+  referenceNumber: ID!
   info: CustomerInfo
   authenticationQuestions: CustomerAuthenticationQuestions
 }
