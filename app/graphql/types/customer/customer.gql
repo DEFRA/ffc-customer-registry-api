@@ -22,9 +22,9 @@ type CustomerStatus {
 }
 
 type CustomerAuthenticationQuestions {
-  memorableDate: String!
-  memorableEvent: String!
-  memorablePlace: String!
+  memorableDate: String
+  memorableEvent: String
+  memorablePlace: String
 }
 
 type Customer {
