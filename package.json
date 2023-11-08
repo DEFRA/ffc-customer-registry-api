@@ -6,15 +6,15 @@
   "main": "app/index.js",
   "type": "module",
   "scripts": {
-    "pretest": "npm run test:lint",
-    "test": "jest --runInBand --forceExit",
+    "pretest": "npm run gql:lint",
+    "test": "npx mocha -- 'test/graphql/**/*.test.js",
     "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
     "test:lint": "standard",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js --coverage=false --onlyChanged --watch --runInBand --no-cache",
     "start:dev": "nodemon --ext js,gql app/index.js",
     "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js",
     "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js",
-    "gql:lint": "eslint app/graphql/types && npx prettier 'app/graphql/types/**/*.gql' --check",
+    "gql:lint": "eslint app/graphql/types && npx prettier app/graphql/types/**/*.gql --check",
     "gql:format": "npx prettier 'app/graphql/types/**/*.gql' --write",
     "gql:test": "npx mocha -- 'test/graphql/**/*.test.js'"
   },
@@ -51,7 +51,8 @@
       "afterEach",
       "jest",
       "beforeAll",
-      "afterAll"
+      "afterAll",
+      "it"
     ]
   },
   "nodemonConfig": {
