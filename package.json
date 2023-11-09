@@ -51,7 +51,8 @@
       "afterEach",
       "jest",
       "beforeAll",
-      "afterAll"
+      "afterAll",
+      "it"
     ]
   },
   "nodemonConfig": {
