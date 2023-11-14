@@ -21,7 +21,7 @@
   "contributors": [],
   "license": "OGL-UK-3.0",
   "dependencies": {
-    "@apollo/datasource-rest": "^6.2.2",
+    "@apollo/datasource-rest": "6.2.2",
     "@apollo/server": "4.9.4",
     "@as-integrations/hapi": "2.0.1",
     "@faker-js/faker": "8.2.0",

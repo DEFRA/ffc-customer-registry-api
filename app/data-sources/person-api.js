@@ -6,6 +6,6 @@ export class PersonAPI extends RuralPaymentsPortalAPI {
   }
 
   async getPerson () {
-    return this.get('/fake-person')
+    return this.get('/person')
   }
 }

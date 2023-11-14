@@ -12,7 +12,7 @@ import { mergeResolvers } from '@graphql-tools/merge'
 async function getFiles (path) {
   return loadFiles(join(dirname(fileURLToPath(import.meta.url)), path), {
     recursive: true,
-    requireMethod: async (path) => import(pathToFileURL(path))
+    requireMethod: async path => import(pathToFileURL(path))
   })
 }
 

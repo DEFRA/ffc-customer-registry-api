@@ -24,9 +24,10 @@ export class RuralPaymentsPortalAPI extends RESTDataSource {
 
   async parseBody (response) {
     // If there's an auth error, get a new cookie
-
     if (response.headers.has('set-cookie')) {
-      const cookie = /seed=[^;]+;/.exec(response.headers.get('set-cookie'))[0]
+      const cookie = /nameOfValueNeededFromCookie=[^;]+;/.exec(
+        response.headers.get('set-cookie')
+      )[0]
 
       await this.setCookie(cookie)
     }
