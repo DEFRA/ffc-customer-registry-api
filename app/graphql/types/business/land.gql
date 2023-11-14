@@ -1,5 +1,12 @@
-# TODO change to type and add other fields
-scalar LandParcels
+type LandCover {
+  id: ID!
+}
+
+type LandParcel {
+  id: ID!
+  area: Float
+  landCovers: [LandLandCover]
+}
 
 type LandSummary {
   date: Date
@@ -11,7 +18,6 @@ type LandSummary {
 
 type Land {
   parcels: LandParcels
-
   summary: LandSummary
 }
 
