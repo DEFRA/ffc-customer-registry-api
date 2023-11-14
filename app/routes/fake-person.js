@@ -13,9 +13,19 @@ export const fakePersonRoute = {
     }
 
     return {
-      title: faker.person.prefix(),
-      firstName: faker.person.firstName(),
-      lastName: faker.person.lastName(),
+      _data: {
+        title: faker.person.prefix(),
+        otherTitle: null,
+        firstName: faker.person.firstName(),
+        middleName: faker.person.middleName(),
+        lastName: faker.person.lastName(),
+        dateOfBirth: faker.date.birthdate(),
+        landline: null,
+        mobile: faker.string.numeric(10),
+        email: faker.internet.email(),
+        doNotContact: false,
+        emailValidated: false,
+      },
     };
   },
 };
