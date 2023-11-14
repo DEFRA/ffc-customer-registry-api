@@ -1,4 +1,5 @@
 type BusinessInfo {
+  sbi: Int
   name: String
   reference: String
   vat: String
@@ -22,7 +23,6 @@ type BusinessType {
 
 type Business {
   id: ID!
-  sbi: ID!
   info: BusinessInfo
   land: Land
 }
