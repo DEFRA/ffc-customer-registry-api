@@ -1,11 +1,11 @@
-import { RuralPaymentsPortalAPI } from "./rural-payments-portaj.js";
+import { RuralPaymentsPortalAPI } from './rural-payments-portaj.js'
 
 export class PersonAPI extends RuralPaymentsPortalAPI {
-  constructor({ cache }) {
-    super({ cache });
+  constructor ({ cache }) {
+    super({ cache })
   }
 
-  async getPerson() {
-    return this.get("/fake-person");
+  async getPerson () {
+    return this.get('/fake-person')
   }
 }

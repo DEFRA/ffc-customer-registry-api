@@ -1,15 +1,15 @@
-import { faker } from "@faker-js/faker/locale/en_GB";
+import { faker } from '@faker-js/faker/locale/en_GB'
 
 export const fakePersonRoute = {
-  method: "GET",
-  path: "/fake-person",
+  method: 'GET',
+  path: '/fake-person',
   handler: (request, h) => {
     if (request.state.seed) {
-      console.log(">>> /fake-person 🍪");
-      faker.seed(Number(request.state.seed));
+      console.log('>>> /fake-person 🍪')
+      faker.seed(Number(request.state.seed))
     } else {
-      console.log(">>> /fake-person 🚫");
-      h.state("seed", faker.seed().toString());
+      console.log('>>> /fake-person 🚫')
+      h.state('seed', faker.seed().toString())
     }
 
     return {
@@ -24,8 +24,8 @@ export const fakePersonRoute = {
         mobile: faker.string.numeric(10),
         email: faker.internet.email(),
         doNotContact: false,
-        emailValidated: false,
-      },
-    };
-  },
-};
+        emailValidated: false
+      }
+    }
+  }
+}
