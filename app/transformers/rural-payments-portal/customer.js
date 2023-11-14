@@ -14,7 +14,7 @@ export default (data) => {
         landline: data.landline
       },
       email: {
-        address: data.email,
+        address: data.email
       },
       address: {
         line1: data.address.address1,
@@ -39,8 +39,8 @@ export default (data) => {
       status: {
         locked: data.locked,
         confirmed: data.confirmed,
-        deactivated: data.deactivated,
-      },
+        deactivated: data.deactivated
+      }
     },
     id: data.id
   }
