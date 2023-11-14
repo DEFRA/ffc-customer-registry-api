@@ -42,6 +42,6 @@ export default (data) => {
         deactivated: data.deactivated,
       },
     },
-    referenceNumber: data.id
+    id: data.id
   }
 }

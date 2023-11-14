@@ -4,8 +4,8 @@ import RuralPaymentsPortalCustomerTransformer from '../../../transformers/rural-
 const ruralPaymentsPortal = new RuralPaymentsPortal()
 
 export const Query = {
-  async customer (_, { referenceNumber }) {
-    const response = await ruralPaymentsPortal.getCustomerByCRN(referenceNumber)
+  async customer (_, { id }) {
+    const response = await ruralPaymentsPortal.getCustomerByCRN(id)
     return RuralPaymentsPortalCustomerTransformer(response)
   }
 }
