@@ -30,7 +30,7 @@ export default (data) => {
         fax: data.fax
       },
       email: {
-        address: data.email,
+        address: data.email
       },
       legalStatus: {
         code: data.legalStatus.id,
@@ -43,7 +43,7 @@ export default (data) => {
       registrationNumbers: {
         companiesHouse: data.companiesHouseRegistrationNumber,
         charityCommission: data.charityCommissionRegistrationNumber
-      },
+      }
     },
     id: data.id
   }

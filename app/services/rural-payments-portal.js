@@ -146,7 +146,7 @@ class RuralPaymentsPortal {
     return customerResponse.data._data
   }
 
-  async getOrganisationBySBI(sbi) {
+  async getOrganisationBySBI (sbi) {
     const cached = cache.get(`/api/organisation/${sbi}`)
     if (cached) {
       return cached
@@ -155,11 +155,11 @@ class RuralPaymentsPortal {
     await this.configureAuthenticatedSession()
 
     const customerResponse = await this.client.request({
-      url: `/api/organisation/${sbi}`, 
+      url: `/api/organisation/${sbi}`,
       method: 'GET',
       headers: {
         'X-XSRF-TOKEN': this.getCookie('XSRF-TOKEN')
-      },
+      }
     })
 
     cache.put(`/api/organisation/${sbi}`, customerResponse.data._data)
