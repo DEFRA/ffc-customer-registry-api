@@ -1,0 +1,13 @@
+type FakePersonGroup {
+  people: [FakePerson]
+}
+
+type FakePerson {
+  title: String
+  firstName: String
+  lastName: String
+}
+
+extend type Query {
+  fakePersonGroup: FakePersonGroup
+}
