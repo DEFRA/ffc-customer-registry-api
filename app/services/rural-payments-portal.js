@@ -155,14 +155,14 @@ class RuralPaymentsPortal {
     await this.configureAuthenticatedSession()
 
     const customerResponse = await this.client.request({
-      url: `/api/organisation/${crn}`, 
+      url: `/api/organisation/${sbi}`, 
       method: 'GET',
       headers: {
         'X-XSRF-TOKEN': this.getCookie('XSRF-TOKEN')
       },
     })
 
-    cache.set(`/api/organisation/${sbi}`, customerResponse.data._data)
+    cache.put(`/api/organisation/${sbi}`, customerResponse.data._data)
 
     return customerResponse.data._data
   }
