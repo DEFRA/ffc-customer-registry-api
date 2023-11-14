@@ -145,6 +145,27 @@ class RuralPaymentsPortal {
 
     return customerResponse.data._data
   }
+
+  async getOrganisationBySBI(sbi) {
+    const cached = cache.get(`/api/organisation/${sbi}`)
+    if (cached) {
+      return cached
+    }
+
+    await this.configureAuthenticatedSession()
+
+    const customerResponse = await this.client.request({
+      url: `/api/organisation/${crn}`, 
+      method: 'GET',
+      headers: {
+        'X-XSRF-TOKEN': this.getCookie('XSRF-TOKEN')
+      },
+    })
+
+    cache.set(`/api/organisation/${sbi}`, customerResponse.data._data)
+
+    return customerResponse.data._data
+  }
 }
 
 export default RuralPaymentsPortal
