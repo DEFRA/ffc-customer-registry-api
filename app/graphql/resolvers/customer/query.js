@@ -9,4 +9,3 @@ export const Query = {
     return RuralPaymentsPortalCustomerTransformer(response)
   }
 }
-
