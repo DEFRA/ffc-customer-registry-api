@@ -11,6 +11,11 @@ Create a `.env` file:
 NODE_ENV=development
 PORT=4000
 MOCK_PORT=3100
+
+# Rural Payments Portal API settings
+RURAL_PAYMENTS_PORTAL_EMAIL=
+RURAL_PAYMENTS_PORTAL_PASSWORD=
+RURAL_PAYMENTS_API_URL=
 ```
 
 Run:
@@ -127,3 +132,7 @@ The following attribution statement MUST be cited in your products and applicati
 The Open Government Licence (OGL) was developed by the Controller of Her Majesty's Stationery Office (HMSO) to enable information providers in the public sector to license the use and re-use of their information under a common open licence.
 
 It is designed to encourage use and re-use of information freely and flexibly, with only a few conditions.
+
+# Running Defra laptop
+
+Ensure add the proxy url your .env: `RURAL_PAYMENTS_PROXY_URL=http://10.255.1.3:443`
