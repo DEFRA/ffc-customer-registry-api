@@ -23,11 +23,11 @@ export default (data) => {
         address: data.email,
       },
       legalStatus: {
-        id: data.legalStatus.id,
+        code: data.legalStatus.id,
         type: data.legalStatus.type
       },
       type: {
-        id: data.businessType.id,
+        code: data.businessType.id,
         type: data.businessType.type
       },
       registrationNumbers: {
