@@ -1,4 +1,28 @@
+type BusinessInfo {
+  name: String
+  reference: String
+  vat: String
+  address: Address
+  phone: Phone
+  email: Email
+  legalStatus: BusinessType
+  type: BusinessType
+  registrationNumbers: BusinessRegistrationNumbers
+}
+
+type BusinessRegistrationNumbers {
+  companiesHouse: String
+  charityCommission: String
+}
+
+type BusinessType {
+  id: ID!
+  type: String
+}
+
 type Business {
   id: ID!
+  sbi: ID!
+  info: BusinessInfo
   land: Land
 }
