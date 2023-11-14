@@ -16,7 +16,7 @@ type BusinessRegistrationNumbers {
 }
 
 type BusinessType {
-  id: ID!
+  code: Int
   type: String
 }
 
