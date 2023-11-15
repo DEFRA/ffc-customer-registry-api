@@ -1,4 +1,4 @@
-export default (data) => {
+export const transformOrganisationToBusiness = (data) => {
   return {
     info: {
       name: data.name,
