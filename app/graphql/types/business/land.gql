@@ -1,11 +1,31 @@
+type LandArea {
+  code: Int
+  name: String
+  area: Int
+}
+
 type LandCover {
   id: ID!
+  areas: [LandArea]
+}
+
+type LandGeometry {
+  type: String
+  coordinates: [[String]]
+}
+
+type LandParcelFeature {
+  id: ID!
+  area: LandArea
+  geometry: LandGeometry
 }
 
 type LandParcel {
   id: ID!
   area: Float
-  landCovers: [LandLandCover]
+  sheetId: String
+  parcelId: String
+  features: String
 }
 
 type LandSummary {
@@ -17,8 +37,9 @@ type LandSummary {
 }
 
 type Land {
-  parcels: LandParcels
   summary: LandSummary
+  parcels: [LandParcel]
+  covers: [LandCover]
 }
 
 extend type Query {
