@@ -6,6 +6,7 @@ import { CookieJar } from 'tough-cookie'
 import Cache from 'cache'
 
 const cache = new Cache(process.env.CACHE_EXPIRY || 60000)
+const roralPaymentsApiUrl = process.env.RURAL_PAYMENTS_API_URL || `http://localhost:${process.env.PORT}`
 
 class RuralPaymentsPortal {
   credentials = {
@@ -17,9 +18,9 @@ class RuralPaymentsPortal {
   client = null
   defaultHeaders = {
     'Accept-Encoding': 'gzip, deflate, br',
-    Host: new URL(process.env.RURAL_PAYMENTS_API_URL).hostname,
-    Origin: process.env.RURAL_PAYMENTS_API_URL.replace(/^./, ''),
-    Referer: `${process.env.RURAL_PAYMENTS_API_URL}login`,
+    Host: new URL(roralPaymentsApiUrl).hostname,
+    Origin: roralPaymentsApiUrl.replace(/^./, ''),
+    Referer: `${roralPaymentsApiUrl}login`,
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
     Accept: '*/*',
     Connection: 'keep-alive'
@@ -40,7 +41,7 @@ class RuralPaymentsPortal {
 
     this.client = wrapper(axios.create({
       jar: this.jar,
-      baseURL: process.env.RURAL_PAYMENTS_API_URL,
+      baseURL: roralPaymentsApiUrl,
       headers: this.defaultHeaders,
       proxy
     }))
@@ -48,7 +49,7 @@ class RuralPaymentsPortal {
     this.client.defaults.maxRedirects = 0
     this.client.interceptors.response.use(
       function (config) {
-        console.log(`#axios-request: ${config.method}:${config.baseURL}${config.url}`, config.headers, config.data)
+        console.log(`#axios-request: ${config?.request?.method}:${config?.request?.path}`, config.headers)
         return config
       },
       (error) => {
@@ -70,7 +71,7 @@ class RuralPaymentsPortal {
 
   async getCSRFToken () {
     const csrfResponse = await this.client.get('login')
-    return csrfResponse.data.match(/(?<=name="csrfToken" value=")(.*)(?="\\>)/g).pop()
+    return csrfResponse.data.match(/(?<=name="csrfToken" value=")(.*)(?="\/>)/g).pop()
   }
 
   getCookie (name) {
@@ -89,6 +90,8 @@ class RuralPaymentsPortal {
     let validSession = await this.hasValidSession()
 
     if (!validSession) {
+      this.jar.removeAllCookiesSync()
+
       const data = qs.stringify({
         email: this.credentials.email,
         password: this.credentials.password,
