@@ -37,6 +37,7 @@ type LandSummary {
 }
 
 type Land {
+  sbi: String!
   summary: LandSummary
   parcels: [LandParcel]
   covers: [LandCover]
