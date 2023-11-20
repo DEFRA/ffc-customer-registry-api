@@ -1,8 +1,8 @@
 export const Query = {
-  business(_, { id }) {
+  business (_, { id }) {
     return {
       id,
-      land: { sbi: id },
-    };
-  },
-};
+      land: { sbi: id }
+    }
+  }
+}

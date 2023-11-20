@@ -1,46 +1,36 @@
-type LandArea {
-  code: Int
-  name: String
-  area: Int
+enum LandCoverDescription {
+  PERMANENT_GRASSLAND
+  PERMANENT_CROPS
+  ARABLE_LAND
 }
 
 type LandCover {
   id: ID!
-  areas: [LandArea]
-}
-
-type LandGeometry {
-  type: String
-  coordinates: [[String]]
-}
-
-type LandParcelFeature {
-  id: ID!
-  area: LandArea
-  geometry: LandGeometry
+  landParcelId: String!
+  classCode: Int
+  description: LandCoverDescription
+  area: Float
 }
 
 type LandParcel {
   id: ID!
+  sbi: String!
   area: Float
-  sheetId: String
-  parcelId: String
-  features: String
+  covers: [LandCover]
 }
 
 type LandSummary {
+  arableLandArea: Float
   date: Date
-  numberOfParcels: Numeric
-  totalArea: Numeric
-  mapImageData: Image
-  permanentGrassland: Numeric
+  numberOfParcels: Float
+  permanentGrasslandArea: Float
+  totalArea: Float
 }
 
 type Land {
   sbi: String!
   summary: LandSummary
   parcels: [LandParcel]
-  covers: [LandCover]
 }
 
 extend type Query {
