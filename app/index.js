@@ -2,6 +2,9 @@ import hapiApollo from '@as-integrations/hapi'
 
 import { server } from './server.js'
 import { apolloServer } from './graphql/server.js'
+import { createContext } from './graphql/context.js'
+
+const context = createContext({ cache: server.cache })
 
 const init = async () => {
   await apolloServer.start()
@@ -9,9 +12,7 @@ const init = async () => {
   await server.register({
     plugin: hapiApollo.default,
     options: {
-      context: async ({ request }) => ({
-        headers: request.headers
-      }),
+      context,
       apolloServer,
       path: '/graphql'
     }
@@ -21,7 +22,7 @@ const init = async () => {
   console.log('Server running on %s', server.info.uri)
 }
 
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   console.log(err)
   process.exit(1)
 })
