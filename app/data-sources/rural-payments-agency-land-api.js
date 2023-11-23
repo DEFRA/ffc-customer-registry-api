@@ -1,6 +1,10 @@
 import { RESTDataSource } from '@apollo/datasource-rest'
 
 export class RuralPaymentsAgencyLandAPI extends RESTDataSource {
+  constructor ({ cache }) {
+    super({ cache })
+  }
+
   baseURL = process.env.RURAL_PAYMENTS_AGENCY_LAND_API_URL
 
   async getLandParcelsBySbi (sbi) {

@@ -3,7 +3,7 @@ import { deepEqual } from 'assert'
 import { graphql } from 'graphql'
 
 import { schema } from '../../app/graphql/server.js'
-import { createContext } from '../../app/graphql/context.js'
+import { context } from '../../app/graphql/context.js'
 
 describe('Query.land', () => {
   it('should return land data', async () => {
@@ -33,7 +33,7 @@ describe('Query.land', () => {
         businessId: '107294898'
       },
       schema,
-      contextValue: await createContext({})()
+      contextValue: await context()
     })
 
     deepEqual(result, {

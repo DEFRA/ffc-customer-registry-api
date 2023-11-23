@@ -2,9 +2,7 @@ import hapiApollo from '@as-integrations/hapi'
 
 import { server } from './server.js'
 import { apolloServer } from './graphql/server.js'
-import { createContext } from './graphql/context.js'
-
-const context = createContext({ cache: server.cache })
+import { context } from './graphql/context.js'
 
 const init = async () => {
   await apolloServer.start()

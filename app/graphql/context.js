@@ -1,11 +1,12 @@
 import { RuralPaymentsAgencyLandAPI } from '../data-sources/rural-payments-agency-land-api.js'
+import { apolloServer } from './server.js'
 
-export function createContext ({ cache }) {
-  return async function context () {
-    return {
-      dataSources: {
-        ruralPaymentsAgencyLandAPI: new RuralPaymentsAgencyLandAPI()
-      }
+export async function context () {
+  const { cache } = apolloServer
+
+  return {
+    dataSources: {
+      ruralPaymentsAgencyLandAPI: new RuralPaymentsAgencyLandAPI({ cache })
     }
   }
 }
