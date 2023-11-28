@@ -29,8 +29,10 @@
     "@graphql-tools/schema": "10.0.0",
     "@hapi/hapi": "21.3.2",
     "applicationinsights": "2.8.0",
+    "azure-ad-jwt-v2": "^2.1.4",
     "graphql": "16.8.1",
-    "@faker-js/faker": "8.2.0"
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0"
   },
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "3.20.1",
