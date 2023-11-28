@@ -24,7 +24,7 @@ const getADGroups = async (authHeader) => {
 
 export const isAuthorized = async (token) => {
   const groupIds = await getADGroups(token)
-  if (groupIds.includes('44a7359e-1755-484e-8cfd-6b3065140355')) {
+  if (groupIds.includes(process.env.ADMIN_AD_GROUP_ID)) {
     console.log('Auth succesful')
     return true
   }
