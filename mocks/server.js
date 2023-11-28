@@ -5,7 +5,7 @@ import collections from './collections.js'
 const server = new Core({
   log: 'info',
   server: {
-    port: process.env.MOCK_PORT
+    port: 3100
   },
   config: {
     allowUnknownArguments: true,

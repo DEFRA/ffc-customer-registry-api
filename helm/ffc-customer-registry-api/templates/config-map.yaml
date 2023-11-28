@@ -5,4 +5,5 @@ data:
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   MOCK_LEVEL: {{ quote .Values.mock_level }}
+  ADMIN_AD_GROUP_ID: {{ quote .Values.ADGroups.admin }}
 {{- end -}}

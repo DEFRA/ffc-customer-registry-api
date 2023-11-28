@@ -48,3 +48,6 @@ ingress:
   class: nginx
   endpoint: ffc-customer-registry-api
   server: example.com
+
+ADGroups:
+  admin:
