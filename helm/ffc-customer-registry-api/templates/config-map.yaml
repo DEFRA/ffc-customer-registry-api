@@ -5,6 +5,5 @@ data:
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   MOCK_LEVEL: {{ quote .Values.mock_level }}
-  API_TENANT_ID: {{ quote .Values.tenantId  }}
-  ADMIN_AD_GROUP_ID: {{ quote .Values.ADGroups.admin }}
+  API_TENANT_ID: {{ quote .Values.azureTenantId }}
 {{- end -}}

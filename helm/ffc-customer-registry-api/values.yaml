@@ -1,5 +1,6 @@
 environment: development
 mock_level: full
+azureTenantId:
 environmentCode:
 tenantId:
 name: ffc-customer-registry-api
@@ -50,5 +51,5 @@ ingress:
   endpoint: ffc-customer-registry-api
   server: example.com
 
-ADGroups:
+adGroups:
   admin:
