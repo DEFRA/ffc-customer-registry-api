@@ -1,14 +1,12 @@
-import { GraphQLError } from 'graphql';
 import jwt from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 
+import { Unauthorized } from '../errors/graphql.js'
 
 const getADGroups = async (authHeader) => {
   try {
     if (!authHeader) {
-      throw new GraphQLError('No Authorization token provided', {
-        extensions: { code: 'FORBIDDEN', },
-      })
+      throw new Unauthorized("No Authorization header provided")
     }
     const client = jwksClient({
       jwksUri: `https://login.microsoftonline.com/${process.env.API_TENANT_ID}/discovery/v2.0/keys`
@@ -22,19 +20,14 @@ const getADGroups = async (authHeader) => {
     return decoded.groups
   } catch (err) {
     console.log({ error: err })
-    throw new GraphQLError('Authentication Failed', {
-      extensions: { code: 'FORBIDDEN', },
-    })
+    throw new Unauthorized("Authentication failed")
   }
 }
 
 export const isAuthorized = async (token) => {
   const groupIds = await getADGroups(token)
   if (groupIds.includes(process.env.ADMIN_AD_GROUP_ID)) {
-    console.log('Auth succesful')
     return true
   }
-  throw new GraphQLError('You are not in the correct group to access this', {
-    extensions: { code: 'FORBIDDEN', },
-  })
+  throw new Unauthorized("Authorization failed, you are not in the correct AD groups")
 }

@@ -1,6 +1,7 @@
 environment: development
 mock_level: full
 environmentCode:
+tenantId:
 name: ffc-customer-registry-api
 namespace: ffc-cr
 workstream: ffc-cr
