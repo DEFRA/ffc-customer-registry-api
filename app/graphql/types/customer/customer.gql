@@ -27,8 +27,40 @@ type CustomerAuthenticationQuestions {
   memorablePlace: String
 }
 
+type CustomerApplication {
+  applicationId: ID
+  year: Int
+  sectorDescription: String
+  moduleId: Int,
+  modcod: String
+  applicationTypeDS: String
+  applicationTypeDE: String
+  statusCode: String
+  statusSubCode: String
+  statusDescription: String
+  activeApplicationFlag: Boolean
+  applicationMovementDate: String
+  applicationCode: String
+  workflowContextSubCode: String
+  needsIntervention: Boolean
+  showAccept: Boolean
+  submitDate: String
+  status: String
+  commonLandsFlag: Boolean
+  printsCount: Int
+  queued: Boolean
+  hasSSSIIntersectionC: Int
+  hasSSSIIntersectionY: Int
+  hasHeferIntersectionY: Int
+  hasBeenAGRLIV: Int
+  terClosingDate: String
+  eligibIntersections: String
+  requiredSSSIApproval: Boolean
+}
+
 type Customer {
   id: ID!
   info: CustomerInfo
   authenticationQuestions: CustomerAuthenticationQuestions
+  applications: [CustomerApplication]
 }
