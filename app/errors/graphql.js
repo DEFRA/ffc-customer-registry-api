@@ -1,8 +1,8 @@
-import { GraphQLError } from 'graphql';
+import { GraphQLError } from 'graphql'
 
 export class Unauthorized extends GraphQLError {
-    constructor(opts) {
-        super(opts);
-        this.extensions = { code: 'UNAUTHORIZED', http: { status: 404 } }
-    }
+  constructor (opts) {
+    super(opts)
+    this.extensions = { code: 'UNAUTHORIZED', http: { status: 404 } }
+  }
 }
