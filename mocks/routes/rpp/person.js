@@ -1,4 +1,4 @@
-import { person, persons } from '../../fixtures/person.js'
+import { person, persons, personApplications } from '../../fixtures/person.js'
 import { pagination } from '../../fixtures/pagination.js'
 
 export default [
@@ -13,6 +13,21 @@ export default [
         options: {
           status: 200,
           body: { _data: person }
+        }
+      }
+    ]
+  },
+  {
+    id: 'rpp-person-get-by-id',
+    url: '/rpp/api/person/:personId/applications',
+    method: ['GET'],
+    variants: [
+      {
+        id: 'default',
+        type: 'json',
+        options: {
+          status: 200,
+          body: { _data: personApplications }
         }
       }
     ]

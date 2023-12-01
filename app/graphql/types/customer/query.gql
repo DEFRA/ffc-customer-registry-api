@@ -1,3 +1,4 @@
 extend type Query {
   customer(id: ID!): Customer
+  customerApplications(id: ID!): Customer
 }

@@ -1,5 +1,5 @@
 import { ruralPaymentsPortalCustomerTransformer } from '../../../transformers/rural-payments-portal/customer.js'
-import { CustomerApplicationTransformer } from '../../../transformers/customer'
+import { Query as ApplicationQuery } from './applications.js'
 
 export const Query = {
   async customer (__, { id }, { dataSources }) {
@@ -7,7 +7,7 @@ export const Query = {
 
     return {
       ...ruralPaymentsPortalCustomerTransformer(response),
-      ...CustomerApplicationTransformer(response.applications)
+      applications: ApplicationQuery,
     }
   }
 }

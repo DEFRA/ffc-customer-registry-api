@@ -61,6 +61,9 @@ export const person = {
   customerReferenceNumber: faker.string.numeric(10),
   personalIdentifiers: null,
   deactivated: false,
+}
+
+export const personApplications = {
   applications: [
     {
       application_id: 1648168,
