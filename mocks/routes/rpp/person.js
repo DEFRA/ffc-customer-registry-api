@@ -18,7 +18,7 @@ export default [
     ]
   },
   {
-    id: 'rpp-person-get-by-id',
+    id: 'rpp-person-applications-get-by-id',
     url: '/rpp/api/person/:personId/applications',
     method: ['GET'],
     variants: [
