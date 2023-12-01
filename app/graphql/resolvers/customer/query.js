@@ -7,7 +7,7 @@ export const Query = {
 
     return {
       ...ruralPaymentsPortalCustomerTransformer(response),
-      applications: CustomerApplicationQuery,
+      applications: CustomerApplicationQuery
     }
   }
 }
