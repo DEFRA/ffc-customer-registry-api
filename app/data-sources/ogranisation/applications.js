@@ -1,7 +1,6 @@
 import { RESTDataSource } from '@apollo/datasource-rest'
 
 export class OrganisationApplicationsDataSourceAPI extends RESTDataSource {
-  // todo: not sure
   baseURL = process.env.RURAL_PAYMENTS_API_URL
 
   getApplicationBySbi (sbi) {
