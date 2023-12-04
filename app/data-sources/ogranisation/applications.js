@@ -5,7 +5,7 @@ export class OrganisationApplicationsDataSourceAPI extends RESTDataSource {
   baseURL = process.env.RURAL_PAYMENTS_API_URL
 
   getApplicationBySbi (sbi) {
-    return this.get(`rpp/injected-screens-mt/${sbi}/organisation/sbi/applications/appslist`, {
+    return this.get(`rpp/injected-screens-mt/api/organisation/${sbi}/applications/appslist `, {
       params: {
         version: '2.0.0',
         request: 'GetFeature',
