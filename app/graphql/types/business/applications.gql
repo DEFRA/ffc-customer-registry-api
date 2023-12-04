@@ -1,9 +1,3 @@
-type ApplicationSSSIIntersection {
-    C: Int
-    Y: Int
-    Y: Int
-}
-
 type BusinessApplication {
     applicationId: ID
     year: Int
@@ -26,7 +20,9 @@ type BusinessApplication {
     commonLandsFlag: Boolean
     printsCount: Int
     queued: Boolean
-    hasSSSIIntersection: ApplicationSSSIIntersection
+    hasSSSIIntersectionC: Int
+    hasSSSIIntersectionY: Int
+    hasHeferIntersectionY: Int
     hasBeenAGRLIV: Int
     terClosingDate: String
     eligibIntersections: String
