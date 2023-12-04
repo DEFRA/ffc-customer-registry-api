@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 
-export const getADGroups = async (authHeader) => {
+export const getAuth = async (authHeader) => {
   try {
     if (!authHeader) {
-      return []
+      return {}
     }
     const client = jwksClient({
       jwksUri: `https://login.microsoftonline.com/${process.env.API_TENANT_ID}/discovery/v2.0/keys`
@@ -15,9 +15,11 @@ export const getADGroups = async (authHeader) => {
     const key = await client.getSigningKey(header.kid)
     const signingKey = key.getPublicKey()
     const decoded = jwt.verify(token, signingKey)
-    return decoded.groups
+
+    return decoded
+
   } catch (err) {
     console.log({ error: err })
-    return []
+    return {}
   }
 }

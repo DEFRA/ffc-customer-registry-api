@@ -1,9 +1,6 @@
-import { checkAuthGroup } from '../../../auth/authorize.js'
-
 export const Mutation = {
-  async updateCustomerAuthenticationQuestions (_, { input }, context) {
-    if (checkAuthGroup(context.adGroups, 'ADMIN')) {
-      return input
-    }
+  async updateCustomerAuthenticationQuestions(_, { input }, context) {
+    context.authorize.checkAuthGroup('ADMIN')
+    return input
   }
 }
