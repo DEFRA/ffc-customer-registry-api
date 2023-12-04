@@ -14,14 +14,14 @@ export function transformOrganisationApplicationToBusinessApplications (applicat
         sector: response.workflow_context_sub_code,
         year: response.year,
         FRN: response.has_hefer_intersection_y,
-        office: null,
+        office: null
       },
       csClaims: {
         schemaYear: response.year,
         type: response.application_type_ds,
         status: response.status_sub_code,
-        lastMovement: response.application_movement_date,
-      },
+        lastMovement: response.application_movement_date
+      }
     })
   }
 

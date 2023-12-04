@@ -43,7 +43,7 @@ export const organisation = {
     type: 'Sole Proprietorship'
   },
   companiesHouseRegistrationNumber: null,
-  charityCommissionRegistrationNumber: null,
+  charityCommissionRegistrationNumber: null
 }
 
 export const organisationApplications = {
