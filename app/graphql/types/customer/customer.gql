@@ -31,4 +31,5 @@ type Customer {
   id: ID!
   info: CustomerInfo
   authenticationQuestions: CustomerAuthenticationQuestions
+  businesses: [Business]
 }

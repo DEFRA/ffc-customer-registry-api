@@ -1,0 +1,34 @@
+type ApplicationSSSIIntersection {
+    C: Int
+    Y: Int
+    Y: Int
+}
+
+type BusinessApplication {
+    applicationId: ID
+    year: Int
+    sectorDescription: String
+    moduleId: Int,
+    modcod: String
+    applicationTypeDS: String
+    applicationTypeDE: String
+    statusCode: String
+    statusSubCode: String
+    statusDescription: String
+    activeApplicationFlag: Boolean
+    applicationMovementDate: String
+    applicationCode: String
+    workflowContextSubCode: String
+    needsIntervention: Boolean
+    showAccept: Boolean
+    submitDate: String
+    status: String
+    commonLandsFlag: Boolean
+    printsCount: Int
+    queued: Boolean
+    hasSSSIIntersection: ApplicationSSSIIntersection
+    hasBeenAGRLIV: Int
+    terClosingDate: String
+    eligibIntersections: String
+    requiredSSSIApproval: Boolean
+}
