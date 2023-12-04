@@ -17,7 +17,6 @@ export const getAuth = async (authHeader) => {
     const decoded = jwt.verify(token, signingKey)
 
     return decoded
-
   } catch (err) {
     console.log({ error: err })
     return {}
