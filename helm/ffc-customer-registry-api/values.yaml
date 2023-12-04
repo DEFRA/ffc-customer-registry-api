@@ -1,5 +1,4 @@
 environment: development
-mock_level: full
 azureTenantId:
 environmentCode:
 tenantId:
@@ -7,6 +6,7 @@ name: ffc-customer-registry-api
 namespace: ffc-cr
 workstream: ffc-cr
 image: ffc-customer-registry-api
+mockServerEnabled: true
 
 labels:
   component: service
@@ -53,3 +53,9 @@ ingress:
 
 adGroups:
   admin:
+
+dataSources:
+  ruralPaymentAgencyLandApiUrl: not-real
+  ruralPaymentPortalApiUrl: not-real
+  ruralPaymentPortalEmail: not-real
+  ruralPaymentPortalPassword: not-real

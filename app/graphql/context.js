@@ -12,7 +12,7 @@ export async function context({ request }) {
     ),
     auth: auth,
     dataSources: {
-      ruralPaymentsAgencyLandAPI: new RuralPaymentsAgencyLandAPI(),
+      ruralPaymentAgencyLandAPI: new RuralPaymentsAgencyLandAPI(),
       ruralPaymentsPortalApi: new RuralPaymentsPortalApi()
     }
   }
