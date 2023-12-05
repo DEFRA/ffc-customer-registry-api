@@ -149,7 +149,7 @@ export class RuralPaymentsSession extends RESTDataSource {
       await this.get('api/person/context')
       return true
     } catch (error) {
-      logger.error('Error checking session', { error })
+      logger.error('#RuralPaymentsSession - Error checking session', { error })
       return false
     }
   }
@@ -164,7 +164,7 @@ export class RuralPaymentsSession extends RESTDataSource {
         await this.initiateAuthenticatedSession()
         resolve()
       } catch (error) {
-        logger.error('Error initiating session', { error })
+        logger.error('#RuralPaymentsSession - Error initiating session', { error })
         reject(error)
       } finally {
         this.onAuthPromise = null
