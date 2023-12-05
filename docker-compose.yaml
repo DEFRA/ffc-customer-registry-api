@@ -9,3 +9,4 @@ services:
       NODE_ENV: development
       APPINSIGHTS_CLOUDROLE: ffc-customer-registry-api-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+      RURAL_PAYMENTS_PORTAL_EMAIL: some-email
