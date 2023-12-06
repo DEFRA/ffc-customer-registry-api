@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 
-export const getAuth = async (authHeader) => {
+export async function getAuth(request) {
+  const authHeader = request?.headers?.authorization
   if (!authHeader) {
     return {}
   }

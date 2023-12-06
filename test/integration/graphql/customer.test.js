@@ -9,7 +9,6 @@ import { person as personFixture } from '../../../mocks/fixtures/person.js'
 describe('Query.customer', () => {
   it('should return customer data', async () => {
     const transformedPerson = ruralPaymentsPortalCustomerTransformer(personFixture)
-
     const result = await graphql({
       source: `#graphql
         query Customer {
@@ -62,7 +61,7 @@ describe('Query.customer', () => {
         customerId: '5090008'
       },
       schema,
-      contextValue: await context()
+      contextValue: await context({})
     })
 
     expect(result).toEqual({
