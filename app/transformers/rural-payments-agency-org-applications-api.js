@@ -1,4 +1,5 @@
-export function transformOrganisationApplicationToBusinessApplications (applications) {
+// CS stands for Countryside Stewardship
+export function transformOrganisationCSApplicationToBusinessApplications (applications) {
   if (!applications) {
     return applications
   }

@@ -11,7 +11,7 @@ export class RuralPaymentsPortalApi extends RuralPaymentsPortalBase {
     return organisationResponse._data
   }
 
-  async getApplicationBySbi (sbi) {
+  async getApplicationsCountrysideStewardshipBySbi (sbi) {
     return this.get(`rpp/injected-screens-mt/api/organisation/${sbi}/applications/appslist`, {
       params: {
         version: '2.0.0',

@@ -1,5 +1,5 @@
 import { transformOrganisationToBusiness } from '../../../transformers/rural-payments-portal/business.js'
-import { transformOrganisationApplicationToBusinessApplications } from '../../../transformers/rural-payments-agency-org-applications-api.js'
+import { transformOrganisationCSApplicationToBusinessApplications } from '../../../transformers/rural-payments-agency-org-applications-api.js'
 
 export const Query = {
   async business (__, { id }, { dataSources }) {
@@ -14,8 +14,8 @@ export const Query = {
   },
 
   async businessApplications (_, { id }, { dataSources }) {
-    const response = await dataSources.ruralPaymentsPortalApi.getApplicationBySbi(id)
+    const response = await dataSources.ruralPaymentsPortalApi.getApplicationsCountrysideStewardshipBySbi(id)
 
-    return transformOrganisationApplicationToBusinessApplications(response.applications)
+    return transformOrganisationCSApplicationToBusinessApplications(response.applications)
   }
 }
