@@ -1,5 +1,5 @@
 import { transformOrganisationToBusiness } from '../../../transformers/rural-payments-portal/business.js'
-import { transformOrganisationApplicationToBusinessApplications } from '../../../transformers/business/application.js'
+import { transformOrganisationApplicationToBusinessApplications } from '../../../transformers/rural-payments-agency-org-applications-api.js'
 
 export const Query = {
   async business (__, { id }, { dataSources }) {

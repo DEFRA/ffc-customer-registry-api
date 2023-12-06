@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker/locale/en_GB'
-import { fa } from '@faker-js/faker'
 
 export const organisation = {
   id: faker.string.numeric(7),
