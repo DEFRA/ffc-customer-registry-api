@@ -10,4 +10,16 @@ export class RuralPaymentsPortalApi extends RuralPaymentsPortalBase {
     const organisationResponse = await this.get(`api/organisation/${sbi}`)
     return organisationResponse._data
   }
+
+  async getApplicationBySbi (sbi) {
+    return this.get(`rpp/injected-screens-mt/api/organisation/${sbi}/applications/appslist`, {
+      params: {
+        version: '2.0.0',
+        request: 'GetApplications',
+        cql_filter: `SBI=${sbi}`,
+        srsname: 'EPSG:27700',
+        outputFormat: 'application/json'
+      }
+    })
+  }
 }

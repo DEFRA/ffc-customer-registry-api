@@ -14,7 +14,7 @@ export const Query = {
   },
 
   async businessApplications (_, { id }, { dataSources }) {
-    const response = await dataSources.api.organisation.applications.getApplicationBySbi(id)
+    const response = await dataSources.ruralPaymentsPortalApi.getApplicationBySbi(id)
 
     return transformOrganisationApplicationToBusinessApplications(response.applications)
   }
