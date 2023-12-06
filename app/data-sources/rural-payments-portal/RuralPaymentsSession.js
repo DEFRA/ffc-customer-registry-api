@@ -8,12 +8,13 @@ import { CookieJar } from 'tough-cookie'
 import { HttpsProxyAgent } from 'https-proxy-agent'
 import { URL } from 'url'
 import qs from 'qs'
+import logger from '../../utils/logger.js'
 
 const defaultHeaders = {
   'Accept-Encoding': 'gzip, deflate, br',
-  Host: new URL(process.env.RURAL_PAYMENTS_API_URL).hostname,
-  Origin: process.env.RURAL_PAYMENTS_API_URL.slice(0, -1),
-  Referer: `${process.env.RURAL_PAYMENTS_API_URL}login`,
+  Host: new URL(process.env.RURAL_PAYMENTS_PORTAL_API_URL).hostname,
+  Origin: process.env.RURAL_PAYMENTS_PORTAL_API_URL.slice(0, -1),
+  Referer: `${process.env.RURAL_PAYMENTS_PORTAL_API_URL}login`,
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
   Accept: '*/*',
   Connection: 'keep-alive'
@@ -24,8 +25,10 @@ const apiCredentials = {
   password: process.env.RURAL_PAYMENTS_PORTAL_PASSWORD
 }
 
+logger.debug('#RuralPaymentsSession - Set api credentials', { apiCredentials })
+
 export class RuralPaymentsSession extends RESTDataSource {
-  baseURL = process.env.RURAL_PAYMENTS_API_URL
+  baseURL = process.env.RURAL_PAYMENTS_PORTAL_API_URL
 
   constructor () {
     super(...arguments)
@@ -34,8 +37,8 @@ export class RuralPaymentsSession extends RESTDataSource {
   }
 
   willSendRequest (path, request) {
-    if (process.env.RURAL_PAYMENTS_PROXY_URL) {
-      request.agent = new HttpsProxyAgent(process.env.RURAL_PAYMENTS_PROXY_URL)
+    if (process.env.RURAL_PAYMENTS_PORTAL_PROXY_URL) {
+      request.agent = new HttpsProxyAgent(process.env.RURAL_PAYMENTS_PORTAL_PROXY_URL)
     }
 
     request.headers = {
@@ -66,7 +69,7 @@ export class RuralPaymentsSession extends RESTDataSource {
         cookies = [cookies]
       }
       cookies.forEach(cookie => {
-        this.jar.setCookieSync(cookie, `${process.env.RURAL_PAYMENTS_API_URL}`)
+        this.jar.setCookieSync(cookie, `${process.env.RURAL_PAYMENTS_PORTAL_API_URL}`)
       })
     }
   }
@@ -74,12 +77,14 @@ export class RuralPaymentsSession extends RESTDataSource {
   async handleRedirects (response) {
     if ([301, 302, 303].includes(response?.status)) {
       const redirectUrl = new URL(response.headers.get('location'))
+      logger.debug('#RuralPaymentsSession - handle redirect', { status: response?.status, redirect: redirectUrl.pathname })
       return this.get(redirectUrl.pathname.replace('/', ''))
     }
   }
 
   async throwIfResponseIsError (options) {
     const { response } = options
+    logger.debug('#RuralPaymentsSession - error', { response })
     if (response?.status < 400) {
       return
     }
@@ -87,6 +92,7 @@ export class RuralPaymentsSession extends RESTDataSource {
   }
 
   async fetch (path, incomingRequest) {
+    logger.debug('#RuralPaymentsSession - new request ', { path, incomingRequest })
     const result = await super.fetch(path, incomingRequest)
     this.setCookies(path, result.response)
     await this.handleRedirects(result.response)
@@ -143,6 +149,7 @@ export class RuralPaymentsSession extends RESTDataSource {
       await this.get('api/person/context')
       return true
     } catch (error) {
+      logger.error('#RuralPaymentsSession - Error checking session', { error })
       return false
     }
   }
@@ -157,6 +164,7 @@ export class RuralPaymentsSession extends RESTDataSource {
         await this.initiateAuthenticatedSession()
         resolve()
       } catch (error) {
+        logger.error('#RuralPaymentsSession - Error initiating session', { error })
         reject(error)
       } finally {
         this.onAuthPromise = null
