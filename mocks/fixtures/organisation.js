@@ -90,7 +90,7 @@ export const organisationApplications = {
       status_sub_code: 'AGROFF',
       status_description: 'AGREEMENT OFFER',
       active_application_flag: true,
-      application_movement_date: '2023-09-20T14:21:36',
+      application_movement_date: faker.date.anytime().toUTCString(),
       application_code: null,
       workflow_context_sub_code: 'STANDA',
       needs_intervention: false,
