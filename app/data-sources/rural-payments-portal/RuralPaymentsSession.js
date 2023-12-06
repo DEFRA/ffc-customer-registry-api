@@ -8,6 +8,7 @@ import { CookieJar } from 'tough-cookie'
 import { HttpsProxyAgent } from 'https-proxy-agent'
 import { URL } from 'url'
 import qs from 'qs'
+import logger from '../../utils/logger.js'
 
 const defaultHeaders = {
   'Accept-Encoding': 'gzip, deflate, br',
@@ -23,7 +24,9 @@ const apiCredentials = {
   email: process.env.RURAL_PAYMENTS_PORTAL_EMAIL,
   password: process.env.RURAL_PAYMENTS_PORTAL_PASSWORD
 }
-console.log(apiCredentials)
+
+logger.debug('#RuralPaymentsSession - Set api credentials', { apiCredentials })
+
 export class RuralPaymentsSession extends RESTDataSource {
   baseURL = process.env.RURAL_PAYMENTS_PORTAL_API_URL
 
@@ -74,12 +77,14 @@ export class RuralPaymentsSession extends RESTDataSource {
   async handleRedirects(response) {
     if ([301, 302, 303].includes(response?.status)) {
       const redirectUrl = new URL(response.headers.get('location'))
+      logger.debug('#RuralPaymentsSession - handle redirect', { status: response?.status, redirect: redirectUrl.pathname })
       return this.get(redirectUrl.pathname.replace('/', ''))
     }
   }
 
   async throwIfResponseIsError(options) {
     const { response } = options
+    logger.debug('#RuralPaymentsSession - error', { response })
     if (response?.status < 400) {
       return
     }
@@ -87,9 +92,7 @@ export class RuralPaymentsSession extends RESTDataSource {
   }
 
   async fetch(path, incomingRequest) {
-    console.log(path)
-    console.log(this.baseURL)
-
+    logger.debug('#RuralPaymentsSession - new request ', { path, incomingRequest })
     const result = await super.fetch(path, incomingRequest)
     this.setCookies(path, result.response)
     await this.handleRedirects(result.response)
@@ -146,6 +149,7 @@ export class RuralPaymentsSession extends RESTDataSource {
       await this.get('api/person/context')
       return true
     } catch (error) {
+      logger.error('#RuralPaymentsSession - Error checking session', { error })
       return false
     }
   }
@@ -160,6 +164,7 @@ export class RuralPaymentsSession extends RESTDataSource {
         await this.initiateAuthenticatedSession()
         resolve()
       } catch (error) {
+        logger.error('#RuralPaymentsSession - Error initiating session', { error })
         reject(error)
       } finally {
         this.onAuthPromise = null
