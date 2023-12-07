@@ -1,15 +1,10 @@
 import { graphql } from 'graphql'
 
 import { schema } from '../../../app/graphql/server.js'
-import { context } from '../../../app/graphql/context.js'
+import { fakeContext } from '../../test-setup.js'
 
 import { transformOrganisationToBusiness } from '../../../app/transformers/rural-payments-portal/business.js'
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
-
-const fakeContext = {
-  ...await context({}),
-  authorize: { checkAuthGroup: () => [process.env.ADMIN] }
-}
 
 describe('Query.customer', () => {
   it('should return business data', async () => {

@@ -1,12 +1,7 @@
 import { graphql } from 'graphql'
 
 import { schema } from '../../../app/graphql/server.js'
-import { context } from '../../../app/graphql/context.js'
-
-const fakeContext = {
-  ...await context({}),
-  authorize: { checkAuthGroup: () => [process.env.ADMIN] }
-}
+import { fakeContext } from '../../test-setup.js'
 
 describe('Query.land', () => {
   it('should return land data', async () => {
