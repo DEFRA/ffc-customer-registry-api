@@ -94,7 +94,10 @@ describe('Query.customer', () => {
 
     expect(result).toEqual({
       data: {
-        business: JSON.parse(JSON.stringify({...transformedOrganisation, ...transformedOrganisationCSApplications})),
+        business: JSON.parse(JSON.stringify({
+          ...transformedOrganisation,
+          ...transformedOrganisationCSApplications
+        }))
       }
     })
   })
