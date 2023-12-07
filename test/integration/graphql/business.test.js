@@ -65,7 +65,7 @@ describe('Query.customer', () => {
         customerId: '5090008'
       },
       schema,
-      contextValue: await context({})
+      contextValue: fakeContext
     })
 
     expect(result).toEqual({

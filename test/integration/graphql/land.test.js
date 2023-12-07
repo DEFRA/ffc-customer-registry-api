@@ -31,7 +31,7 @@ describe('Query.land', () => {
         businessId: '107294898'
       },
       schema,
-      contextValue: await context({})
+      contextValue: fakeContext
     })
 
     expect(result).toEqual({

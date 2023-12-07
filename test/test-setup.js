@@ -1,7 +1,19 @@
 import { jest } from '@jest/globals'
 
-jest.unstable_mockModule('../app/auth/authenticate.js', () => ({
-    getAuth: () => ({ groups: [process.env.ADMIN_AD_GROUP_ID] })
+// This needs to be done prior to any imports that may reference it
+jest.unstable_mockModule('jwks-rsa', () => ({
+    __esModule: true,
+    default: () => ({
+        getSigningKey: () => ({
+            getPublicKey: () => 'secret'
+        })
+    })
 }));
 
+const { context } = await import('../app/graphql/context.js')
+
 global.jest = jest
+global.fakeContext = {
+    ...await context({}),
+    authorize: { checkAuthGroup: () => [process.env.ADMIN] }
+}
