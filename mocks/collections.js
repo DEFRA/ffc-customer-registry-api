@@ -15,7 +15,9 @@ export default [
       'rpp-person-get-by-crn:default',
 
       'rpp-lms-get-land-covers:default',
-      'rpp-lms-get-parcels:default'
+      'rpp-lms-get-parcels:default',
+
+      'rpp-messages:default'
     ]
   }
 ]
