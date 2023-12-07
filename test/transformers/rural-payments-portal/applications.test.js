@@ -9,7 +9,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
     const actual = sut(null)
 
     test('it should return a JSON with applications field and an empty array', () => {
-      expect(actual).toEqual({applications: []})
+      expect(actual).toEqual({ applications: [] })
     })
   })
 
@@ -17,7 +17,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
     const actual = sut(null)
 
     test('it should return a JSON with applications field and an empty array', () => {
-      expect(actual).toEqual({applications: []})
+      expect(actual).toEqual({ applications: [] })
     })
   })
 
@@ -34,7 +34,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
         office: null,
         application_type_ds: 'Countryside Stewardship (MT)',
         status_sub_code: 'WTHDRW',
-        application_movement_date: '2023-08-17T10:38:49',
+        application_movement_date: '2023-08-17T10:38:49'
       },
       {
         application_id: 1649461,
@@ -47,8 +47,8 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
         office: null,
         application_type_ds: 'Countryside Stewardship (MT)',
         status_sub_code: 'AGROFF',
-        application_movement_date: '2023-09-20T14:21:36',
-      },
+        application_movement_date: '2023-09-20T14:21:36'
+      }
     ])
 
     test('it should return an enrich JSON with applications populated', () => {
@@ -89,7 +89,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
               status: 'AGROFF',
               lastMovement: '2023-09-20T14:21:36'
             }
-          },
+          }
         ]
       })
     })

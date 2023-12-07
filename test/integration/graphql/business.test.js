@@ -8,9 +8,8 @@ import {
 } from '../../../app/transformers/rural-payments-portal'
 import {
   organisation as organisationFixture,
-  organisationCSApplications as organisationCSApplicationsFixture,
+  organisationCSApplications as organisationCSApplicationsFixture
 } from '../../../mocks/fixtures/organisation.js'
-
 
 describe('Query.customer', () => {
   it('should return business data', async () => {
@@ -96,7 +95,7 @@ describe('Query.customer', () => {
     expect(result).toEqual({
       data: {
         business: JSON.parse(JSON.stringify(transformedOrganisation)),
-        applications: transformedOrganisationCSApplications,
+        applications: transformedOrganisationCSApplications
       }
     })
   })
