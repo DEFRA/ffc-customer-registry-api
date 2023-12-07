@@ -1,4 +1,4 @@
 extend type Query {
   business(id: ID!): Business
-  businessApplications(id: ID!): BusinessApplication
+  businessApplications(id: ID!): [BusinessApplication]
 }

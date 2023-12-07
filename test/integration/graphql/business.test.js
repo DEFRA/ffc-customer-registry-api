@@ -101,3 +101,76 @@ describe('Query.customer', () => {
     })
   })
 })
+
+describe('Query businessApplications', async () => {
+  const result = await graphql({
+    source: `#graphql
+    query BusinessApplications {
+        businessApplications(id: "5444918") {
+            applicationStatus {
+                id
+                open
+                status
+                type
+                sector
+                year
+                FRN
+                office
+            }
+            csClaims {
+                schemeYear
+                type
+                status
+                lastMovement
+            }
+        }
+    }
+    `,
+    variableValues: {
+      customerId: '5444918'
+    },
+    schema,
+    contextValue: context()
+  })
+
+  expect(result).toEqual({
+    data: [
+      {
+        applicationStatus: {
+          id: 1648168,
+          open: null,
+          status: 'Withdrawn',
+          type: 'Countryside Stewardship (MT) Module 2023',
+          sector: null,
+          year: 2023,
+          FRN: 0,
+          office: null
+        },
+        csClaims: {
+          schemaYear: 2023,
+          type: 'Countryside Stewardship (MT)',
+          status: 'WTHDRW',
+          lastMovement: '2023-08-17T10:38:49'
+        }
+      },
+      {
+        applicationStatus: {
+          id: 1649461,
+          open: null,
+          status: 'Checking Application',
+          type: 'Countryside Stewardship (MT) Module 2023',
+          sector: 'STANDA',
+          year: 2023,
+          FRN: 0,
+          office: null
+        },
+        csClaims: {
+          schemaYear: 2023,
+          type: 'Countryside Stewardship (MT)',
+          status: 'AGROFF',
+          lastMovement: '2023-09-20T14:21:36'
+        }
+      }
+    ]
+  })
+})
