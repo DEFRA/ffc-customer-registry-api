@@ -3,10 +3,10 @@ import {
 } from '../../../app/transformers/rural-payments-portal/index.js'
 
 describe('transformOrganisationCSApplicationToBusinessApplications Test', () => {
-  const sut = transformOrganisationCSApplicationToBusinessApplications
+  const systemUnderTest = transformOrganisationCSApplicationToBusinessApplications
 
   describe('given payload has no applications defined', () => {
-    const actual = sut(null)
+    const actual = systemUnderTest(null)
 
     test('it should return a JSON with applications field and an empty array', () => {
       expect(actual).toEqual({ applications: [] })
@@ -14,7 +14,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
   })
 
   describe('given payload has applications defined as an empty array', () => {
-    const actual = sut(null)
+    const actual = systemUnderTest(null)
 
     test('it should return a JSON with applications field and an empty array', () => {
       expect(actual).toEqual({ applications: [] })
@@ -22,7 +22,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
   })
 
   describe('given payload has two applications defined', () => {
-    const actual = sut([
+    const actual = systemUnderTest([
       {
         application_id: 1648168,
         application_code: null,
