@@ -1,5 +1,5 @@
 import { pagination } from '../../fixtures/pagination.js'
-import { organisation, organisationApplications, organisations } from '../../fixtures/organisation.js'
+import { organisation, organisationCSApplications, organisations } from '../../fixtures/organisation.js'
 
 export default [
   {
@@ -58,7 +58,7 @@ export default [
         type: 'json',
         options: {
           status: 200,
-          body: { _data: organisationApplications }
+          body: { _data: organisationCSApplications }
         }
       }
     ]

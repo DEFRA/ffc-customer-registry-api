@@ -46,7 +46,7 @@ export const organisation = {
   charityCommissionRegistrationNumber: null
 }
 
-export const organisationApplications = {
+export const organisationCSApplications = {
   applications: [
     {
       application_id: faker.number.int({ min: 1649461, max: 9649461 }),
