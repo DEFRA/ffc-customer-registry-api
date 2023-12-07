@@ -3,13 +3,13 @@ import { RuralPaymentsPortalApi } from '../data-sources/rural-payments-portal/Ru
 import { getAuth } from '../auth/authenticate.js'
 import { Authorize } from '../auth/authorize.js'
 
-export async function context({ request }) {
+export async function context ({ request }) {
   const auth = await getAuth(request)
   return {
     authorize: new Authorize(
       { adGroups: auth.groups || [] }
     ),
-    auth: auth,
+    auth,
     dataSources: {
       ruralPaymentAgencyLandAPI: new RuralPaymentsAgencyLandAPI(),
       ruralPaymentsPortalApi: new RuralPaymentsPortalApi()

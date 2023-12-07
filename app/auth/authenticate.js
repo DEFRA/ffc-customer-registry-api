@@ -3,7 +3,7 @@ import jwksClient from 'jwks-rsa'
 
 import logger from '../utils/logger.js'
 
-export async function getAuth(request) {
+export async function getAuth (request) {
   try {
     const authHeader = request?.headers?.authorization
     if (!authHeader) {
@@ -24,5 +24,4 @@ export async function getAuth(request) {
     logger.error('#authenticate - Error verifying jwt', { error })
     return {}
   }
-
 }

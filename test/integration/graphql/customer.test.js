@@ -6,6 +6,11 @@ import { context } from '../../../app/graphql/context.js'
 import { ruralPaymentsPortalCustomerTransformer } from '../../../app/transformers/rural-payments-portal/customer.js'
 import { person as personFixture } from '../../../mocks/fixtures/person.js'
 
+const fakeContext = {
+  ...await context({}),
+  authorize: { checkAuthGroup: () => [process.env.ADMIN] }
+}
+
 describe('Query.customer', () => {
   it('should return customer data', async () => {
     const transformedPerson = ruralPaymentsPortalCustomerTransformer(personFixture)
