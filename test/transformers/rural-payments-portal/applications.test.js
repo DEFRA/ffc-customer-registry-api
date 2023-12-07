@@ -1,6 +1,6 @@
 import {
   transformOrganisationCSApplicationToBusinessApplications
-} from '../../../app/transformers/rural-payments-portal/index.js'
+} from '../../../app/transformers/rural-payments-portal'
 
 describe('transformOrganisationCSApplicationToBusinessApplications Test', () => {
   const systemUnderTest = transformOrganisationCSApplicationToBusinessApplications
