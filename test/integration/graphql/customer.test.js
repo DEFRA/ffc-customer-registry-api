@@ -5,10 +5,17 @@ import { context } from '../../../app/graphql/context.js'
 
 import { ruralPaymentsPortalCustomerTransformer } from '../../../app/transformers/rural-payments-portal/customer.js'
 import { person as personFixture } from '../../../mocks/fixtures/person.js'
+import {
+  transformOrganisationCSApplicationToBusinessApplications
+} from '../../../app/transformers/rural-payments-portal/index.js'
+import {
+  organisationCSApplications as organisationCSApplicationsFixture
+} from '../../../mocks/fixtures/organisation.js'
 
 describe('Query.customer', () => {
   it('should return customer data', async () => {
     const transformedPerson = ruralPaymentsPortalCustomerTransformer(personFixture)
+    const transformedOrganisationCSApplications = transformOrganisationCSApplicationToBusinessApplications(organisationCSApplicationsFixture)
 
     const result = await graphql({
       source: `#graphql
@@ -55,6 +62,26 @@ describe('Query.customer', () => {
                 typeId
               }
             }
+            businesses {
+              applications {
+                applicationStatus {
+                  id
+                  open
+                  status
+                  type
+                  sector
+                  year
+                  FRN
+                  office
+                }
+                csClaims {
+                  schemeYear
+                  type
+                  status
+                  lastMovement
+                }
+              }
+            }
           }
         }
       `,
@@ -67,7 +94,7 @@ describe('Query.customer', () => {
 
     expect(result).toEqual({
       data: {
-        customer: JSON.parse(JSON.stringify(transformedPerson))
+        customer: JSON.parse(JSON.stringify({ ...transformedPerson, businesses: [transformedOrganisationCSApplications] }))
       }
     })
   })
