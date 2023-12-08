@@ -55,8 +55,8 @@ export function transformPersonPrivilegesToCustomerAuthorisedBusinessesPrivilege
 }
 
 export function transformPersonSummaryToCustomerAuthorisedBusinesses (customerId, summary) {
-  return summary.map((business) => ({
+  return summary.map(({ id }) => ({
     customerId,
-    businessId: business.id
+    id
   }))
 }

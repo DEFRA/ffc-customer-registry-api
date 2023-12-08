@@ -10,7 +10,7 @@ import { person } from '../../../mocks/fixtures/person.js'
 describe('Customer transformer', () => {
   test('transformPersonRolesToCustomerAuthorisedBusinessesRoles', () => {
     const result = transformPersonSummaryToCustomerAuthorisedBusinesses('customerId', [organisationPersonSummary])
-    expect(result).toEqual([{ customerId: 'customerId', businessId: '4309257' }])
+    expect(result).toEqual([{ customerId: 'customerId', id: '4309257' }])
   })
 
   test('transformPersonRolesToCustomerAuthorisedBusinessesRoles', () => {

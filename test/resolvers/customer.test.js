@@ -17,18 +17,18 @@ const dataSources = {
 describe('Customer', () => {
   test('Customer.businesses', async () => {
     const response = await Customer.businesses({ id: 'mockCustomerId' }, undefined, { dataSources })
-    expect(response).toEqual([{ businessId: '4309257', customerId: 'mockCustomerId' }])
+    expect(response).toEqual([{ id: '4309257', customerId: 'mockCustomerId' }])
   })
 })
 
 describe('CustomerBusiness', () => {
   test('CustomerBusiness.roles', async () => {
-    const response = await CustomerBusiness.roles({ businessId: 'mockBusinessId', customerId: person.id }, undefined, { dataSources })
+    const response = await CustomerBusiness.roles({ id: 'mockBusinessId', customerId: person.id }, undefined, { dataSources })
     expect(response).toEqual(['Business Partner'])
   })
 
   test('CustomerBusiness.privileges', async () => {
-    const response = await CustomerBusiness.privileges({ businessId: 'mockBusinessId', customerId: person.id }, undefined, { dataSources })
+    const response = await CustomerBusiness.privileges({ id: 'mockBusinessId', customerId: person.id }, undefined, { dataSources })
     expect(response).toEqual([
       'Full permission - business',
       'SUBMIT - CS APP - SA',

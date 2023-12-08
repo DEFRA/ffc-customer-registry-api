@@ -35,8 +35,7 @@ type Customer {
 }
 
 type CustomerBusiness {
-  customerId: String!
-  businessId: String!
+  id: ID!
   roles: [String]
   privileges: [String]
 }
