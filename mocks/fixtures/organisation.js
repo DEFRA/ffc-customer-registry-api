@@ -50,7 +50,7 @@ export const organisationCSApplications = {
   applications: [
     {
       application_id: faker.number.int({ min: 1649461, max: 9649461 }),
-      year: faker.number.int({ min: 2000, max: 2023 }),
+      year: 2023,
       sector_description: faker.string.alphanumeric(),
       module_id: faker.number.int(),
       modcod: null,
@@ -80,7 +80,7 @@ export const organisationCSApplications = {
     },
     {
       application_id: faker.number.int({ min: 1649461, max: 9649461 }),
-      year: faker.number.int({ min: 2000, max: 2023 }),
+      year: 2023,
       sector_description: faker.string.alphanumeric(),
       module_id: faker.number.int(),
       modcod: null,
