@@ -19,72 +19,72 @@ describe('Query.customer', () => {
 
     const result = await graphql({
       source: `#graphql
-        query Business {
+      query Business {
           business(id: "5444918") {
-            id
-            info {
-              sbi
-              name
-              reference
-              vat
-              address {
-                pafOrganisationName
-                buildingNumberRange
-                buildingName
-                flatName
-                street
-                city
-                county
-                postalCode
-                country
-                uprn
-                dependentLocality
-                doubleDependentLocality
-                typeId
+              id
+              info {
+                  sbi
+                  name
+                  reference
+                  vat
+                  address {
+                      pafOrganisationName
+                      buildingNumberRange
+                      buildingName
+                      flatName
+                      street
+                      city
+                      county
+                      postalCode
+                      country
+                      uprn
+                      dependentLocality
+                      doubleDependentLocality
+                      typeId
+                  }
+                  phone {
+                      mobile
+                      landline
+                      fax
+                  }
+                  email {
+                      address
+                      validated
+                      doNotContact
+                  }
+                  legalStatus {
+                      code
+                      type
+                  }
+                  type {
+                      code
+                      type
+                  }
+                  registrationNumbers {
+                      companiesHouse
+                      charityCommission
+                  }
               }
-              phone {
-                mobile
-                landline
-                fax
+              applications {
+                  applicationStatus {
+                      id
+                      open
+                      status
+                      type
+                      sector
+                      year
+                      frn
+                      office
+                  }
+                  csClaim {
+                      schemeYear
+                      type
+                      status
+                      lastMovement
+                  }
               }
-              email {
-                address
-                validated
-                doNotContact
-              }
-              legalStatus {
-                code
-                type
-              }
-              type {
-                code
-                type
-              }
-              registrationNumbers {
-                companiesHouse
-                charityCommission
-              }
-            }
-            applications {
-              applicationStatus {
-                id
-                open
-                status
-                type
-                sector
-                year
-                frn
-                office
-              }
-              csClaims {
-                schemeYear
-                type
-                status
-                lastMovement
-              }
-            }
           }
-        }
+      }
       `,
       variableValues: {
         customerId: '5090008'
@@ -119,7 +119,7 @@ describe('Query businessApplications', async () => {
                 frn
                 office
             }
-            csClaims {
+            csClaim {
                 schemeYear
                 type
                 status

@@ -21,7 +21,7 @@ export function transformOrganisationCSApplicationToBusinessApplications (applic
         frn: response.has_hefer_intersection_y,
         office: null
       },
-      csClaims: {
+      csClaim: {
         schemaYear: response.year,
         type: response.application_type_ds,
         status: response.status_sub_code,

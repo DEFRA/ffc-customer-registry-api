@@ -18,71 +18,71 @@ describe('Query.customer', () => {
 
     const result = await graphql({
       source: `#graphql
-        query Customer {
+      query Customer {
           customer(id: "5090008") {
-            id
-            info {
-              name {
-                title
-                otherTitle
-                first
-                middle
-                last
+              id
+              info {
+                  name {
+                      title
+                      otherTitle
+                      first
+                      middle
+                      last
+                  }
+                  dateOfBirth
+                  phone {
+                      mobile
+                      landline
+                      fax
+                  }
+                  email {
+                      address
+                      validated
+                      doNotContact
+                  }
+                  status {
+                      locked
+                      confirmed
+                      deactivated
+                  }
+                  address {
+                      pafOrganisationName
+                      buildingNumberRange
+                      buildingName
+                      flatName
+                      street
+                      city
+                      county
+                      postalCode
+                      country
+                      uprn
+                      dependentLocality
+                      doubleDependentLocality
+                      typeId
+                  }
               }
-              dateOfBirth
-              phone {
-                mobile
-                landline
-                fax
+              businesses {
+                  applications {
+                      applicationStatus {
+                          id
+                          open
+                          status
+                          type
+                          sector
+                          year
+                          frn
+                          office
+                      }
+                      csClaim {
+                          schemeYear
+                          type
+                          status
+                          lastMovement
+                      }
+                  }
               }
-              email {
-                address
-                validated
-                doNotContact
-              }
-              status {
-                locked
-                confirmed
-                deactivated
-              }
-              address {
-                pafOrganisationName
-                buildingNumberRange
-                buildingName
-                flatName
-                street
-                city
-                county
-                postalCode
-                country
-                uprn
-                dependentLocality
-                doubleDependentLocality
-                typeId
-              }
-            }
-            businesses {
-              applications {
-                applicationStatus {
-                  id
-                  open
-                  status
-                  type
-                  sector
-                  year
-                  frn
-                  office
-                }
-                csClaims {
-                  schemeYear
-                  type
-                  status
-                  lastMovement
-                }
-              }
-            }
           }
-        }
+      }
       `,
       variableValues: {
         customerId: '5090008'
