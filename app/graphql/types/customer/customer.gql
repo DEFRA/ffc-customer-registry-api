@@ -32,11 +32,4 @@ type Customer {
   info: CustomerInfo
   authenticationQuestions: CustomerAuthenticationQuestions
   businesses: [Business]
-  businesses: [CustomerBusiness]
-}
-
-type CustomerBusiness {
-  id: ID!
-  roles: [String]
-  privileges: [String]
 }

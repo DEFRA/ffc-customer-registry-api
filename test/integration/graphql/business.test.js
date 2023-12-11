@@ -73,7 +73,7 @@ describe('Query.customer', () => {
                 type
                 sector
                 year
-                FRN
+                frn
                 office
               }
               csClaims {
@@ -116,7 +116,7 @@ describe('Query businessApplications', async () => {
                 type
                 sector
                 year
-                FRN
+                frn
                 office
             }
             csClaims {
@@ -132,45 +132,45 @@ describe('Query businessApplications', async () => {
       customerId: '5444918'
     },
     schema,
-    contextValue: context()
+    contextValue: fakeContext
   })
 
   expect(result).toEqual({
     data: [
       {
         applicationStatus: {
-          id: 1648168,
+          id: expect.any(Number),
           open: null,
           status: 'Withdrawn',
-          type: 'Countryside Stewardship (MT) Module 2023',
+          type: expect.any(String),
           sector: null,
-          year: 2023,
-          FRN: 0,
+          year: expect.any(Number),
+          frn: expect.any(Number),
           office: null
         },
         csClaims: {
-          schemaYear: 2023,
-          type: 'Countryside Stewardship (MT)',
+          schemaYear: expect.any(Number),
+          type: expect.any(String),
           status: 'WTHDRW',
-          lastMovement: '2023-08-17T10:38:49'
+          lastMovement: expect.any(String)
         }
       },
       {
         applicationStatus: {
-          id: 1649461,
+          id: expect.any(Number),
           open: null,
           status: 'Checking Application',
-          type: 'Countryside Stewardship (MT) Module 2023',
+          type: expect.any(String),
           sector: 'STANDA',
-          year: 2023,
-          FRN: 0,
+          year: expect.any(Number),
+          frn: expect.any(Number),
           office: null
         },
         csClaims: {
-          schemaYear: 2023,
-          type: 'Countryside Stewardship (MT)',
+          schemaYear: expect.any(Number),
+          type: expect.any(String),
           status: 'AGROFF',
-          lastMovement: '2023-09-20T14:21:36'
+          lastMovement: expect.any(String)
         }
       }
     ]

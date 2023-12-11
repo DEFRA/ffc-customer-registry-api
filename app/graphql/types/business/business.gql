@@ -24,6 +24,8 @@ type BusinessType {
 
 type Business {
   id: ID!
+  roles: [String]
+  privileges: [String]
   info: BusinessInfo
   land: Land
   applications: [BusinessApplication]

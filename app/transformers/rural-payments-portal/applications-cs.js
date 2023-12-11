@@ -18,7 +18,7 @@ export function transformOrganisationCSApplicationToBusinessApplications (applic
         type: response.application_type_de,
         sector: response.workflow_context_sub_code,
         year: response.year,
-        FRN: response.has_hefer_intersection_y,
+        frn: response.has_hefer_intersection_y,
         office: null
       },
       csClaims: {

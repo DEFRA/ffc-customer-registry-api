@@ -70,7 +70,7 @@ describe('Query.customer', () => {
                   type
                   sector
                   year
-                  FRN
+                  frn
                   office
                 }
                 csClaims {

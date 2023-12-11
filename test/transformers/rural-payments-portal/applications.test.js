@@ -62,7 +62,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
               type: 'Countryside Stewardship (MT) Module 2023',
               sector: null,
               year: 2023,
-              FRN: 0,
+              frn: 0,
               office: null
             },
             csClaims: {
@@ -80,7 +80,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
               type: 'Countryside Stewardship (MT) Module 2023',
               sector: 'STANDA',
               year: 2023,
-              FRN: 0,
+              frn: 0,
               office: null
             },
             csClaims: {
