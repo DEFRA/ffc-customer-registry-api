@@ -6,7 +6,7 @@ import { fakeContext } from '../../test-setup.js'
 import { transformOrganisationToBusiness } from '../../../app/transformers/rural-payments-portal/business.js'
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
 
-describe('Query.business', () => {
+describe('Query.customer', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
 
@@ -71,81 +71,6 @@ describe('Query.business', () => {
     expect(result).toEqual({
       data: {
         business: JSON.parse(JSON.stringify(transformedOrganisation))
-      }
-    })
-  })
-
-  it('should bring business application data', async () => {
-    const result = await graphql({
-      source: `#graphql
-      query BusinessApplications {
-          businessApplications(id: "5444918") {
-              applicationStatus {
-                  id
-                  open
-                  status
-                  type
-                  sector
-                  year
-                  frn
-                  office
-              }
-              csClaim {
-                  schemeYear
-                  type
-                  status
-                  lastMovement
-              }
-          }
-      }
-      `,
-      variableValues: {
-        customerId: '5444918'
-      },
-      schema,
-      contextValue: fakeContext
-    })
-
-    expect(result).toEqual({
-      data: {
-        businessApplications: [
-          {
-            applicationStatus: {
-              id: expect.any(Number),
-              open: null,
-              status: 'Withdrawn',
-              type: expect.any(String),
-              sector: null,
-              year: expect.any(Number),
-              frn: expect.any(Number),
-              office: null
-            },
-            csClaim: {
-              schemaYear: expect.any(Number),
-              type: expect.any(String),
-              status: 'WTHDRW',
-              lastMovement: expect.any(String)
-            }
-          },
-          {
-            applicationStatus: {
-              id: expect.any(Number),
-              open: null,
-              status: 'Checking Application',
-              type: expect.any(String),
-              sector: 'STANDA',
-              year: expect.any(Number),
-              frn: expect.any(Number),
-              office: null
-            },
-            csClaim: {
-              schemaYear: expect.any(Number),
-              type: expect.any(String),
-              status: 'AGROFF',
-              lastMovement: expect.any(String)
-            }
-          }
-        ]
       }
     })
   })
