@@ -28,7 +28,7 @@ describe('Query businessApplications', () => {
       }
       `,
       variableValues: {
-        customerId: '5444918'
+        id: '5444918'
       },
       schema,
       contextValue: fakeContext
