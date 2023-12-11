@@ -65,7 +65,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
               frn: 0,
               office: null
             },
-            csClaims: {
+            csClaim: {
               schemaYear: 2023,
               type: 'Countryside Stewardship (MT)',
               status: 'WTHDRW',
@@ -83,7 +83,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
               frn: 0,
               office: null
             },
-            csClaims: {
+            csClaim: {
               schemaYear: 2023,
               type: 'Countryside Stewardship (MT)',
               status: 'AGROFF',

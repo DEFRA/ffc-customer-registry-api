@@ -148,7 +148,7 @@ describe('Query businessApplications', async () => {
           frn: expect.any(Number),
           office: null
         },
-        csClaims: {
+        csClaim: {
           schemaYear: expect.any(Number),
           type: expect.any(String),
           status: 'WTHDRW',
@@ -166,7 +166,7 @@ describe('Query businessApplications', async () => {
           frn: expect.any(Number),
           office: null
         },
-        csClaims: {
+        csClaim: {
           schemaYear: expect.any(Number),
           type: expect.any(String),
           status: 'AGROFF',
