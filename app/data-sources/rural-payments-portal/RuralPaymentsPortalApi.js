@@ -22,14 +22,7 @@ export class RuralPaymentsPortalApi extends RuralPaymentsPortalBase {
   }
 
   async getApplicationsCountrysideStewardshipBySbi (sbi) {
-    return this.get(`rpp/injected-screens-mt/api/organisation/${sbi}/applications/appslist`, {
-      params: {
-        version: '2.0.0',
-        request: 'GetApplications',
-        cql_filter: `SBI=${sbi}`,
-        srsname: 'EPSG:27700',
-        outputFormat: 'application/json'
-      }
-    })
+    const response = await this.get(`injected-screens-mt/api/organisation/${sbi}/applications/appslist`)
+    return response.data
   }
 }

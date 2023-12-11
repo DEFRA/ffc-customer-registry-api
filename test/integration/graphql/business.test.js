@@ -3,90 +3,63 @@ import { graphql } from 'graphql'
 import { schema } from '../../../app/graphql/server.js'
 import { fakeContext } from '../../test-setup.js'
 
-import {
-  transformOrganisationToBusiness
-} from '../../../app/transformers/rural-payments-portal/business.js'
-import {
-  transformOrganisationCSApplicationToBusinessApplications
-} from '../../../app/transformers/rural-payments-portal/applications-cs.js'
-import {
-  organisation as organisationFixture,
-  organisationCSApplications as organisationCSApplicationsFixture
-} from '../../../mocks/fixtures/organisation.js'
+import { transformOrganisationToBusiness } from '../../../app/transformers/rural-payments-portal/business.js'
+import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
 
 describe('Query.customer', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
-    const transformedOrganisationCSApplications = transformOrganisationCSApplicationToBusinessApplications(organisationCSApplicationsFixture)
 
     const result = await graphql({
       source: `#graphql
-      query Business {
+        query Business {
           business(id: "5444918") {
-              id
-              info {
-                  sbi
-                  name
-                  reference
-                  vat
-                  address {
-                      pafOrganisationName
-                      buildingNumberRange
-                      buildingName
-                      flatName
-                      street
-                      city
-                      county
-                      postalCode
-                      country
-                      uprn
-                      dependentLocality
-                      doubleDependentLocality
-                      typeId
-                  }
-                  phone {
-                      mobile
-                      landline
-                      fax
-                  }
-                  email {
-                      address
-                      validated
-                      doNotContact
-                  }
-                  legalStatus {
-                      code
-                      type
-                  }
-                  type {
-                      code
-                      type
-                  }
-                  registrationNumbers {
-                      companiesHouse
-                      charityCommission
-                  }
+            id
+            info {
+              sbi
+              name
+              reference
+              vat
+              address {
+                pafOrganisationName
+                buildingNumberRange
+                buildingName
+                flatName
+                street
+                city
+                county
+                postalCode
+                country
+                uprn
+                dependentLocality
+                doubleDependentLocality
+                typeId
               }
-              applications {
-                  applicationStatus {
-                      id
-                      open
-                      status
-                      type
-                      sector
-                      year
-                      frn
-                      office
-                  }
-                  csClaim {
-                      schemeYear
-                      type
-                      status
-                      lastMovement
-                  }
+              phone {
+                mobile
+                landline
+                fax
               }
+              email {
+                address
+                validated
+                doNotContact
+              }
+              legalStatus {
+                code
+                type
+              }
+              type {
+                code
+                type
+              }
+              registrationNumbers {
+                companiesHouse
+                charityCommission
+              }
+            }
           }
-      }
+        }
       `,
       variableValues: {
         customerId: '5090008'
@@ -97,10 +70,7 @@ describe('Query.customer', () => {
 
     expect(result).toEqual({
       data: {
-        business: JSON.parse(JSON.stringify({
-          ...transformedOrganisation,
-          ...transformedOrganisationCSApplications
-        }))
+        business: JSON.parse(JSON.stringify(transformedOrganisation))
       }
     })
   })
