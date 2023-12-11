@@ -176,7 +176,7 @@ describe('Query businessApplications', () => {
             }
           }
         ]
-    },
+      }
     })
   })
 })
