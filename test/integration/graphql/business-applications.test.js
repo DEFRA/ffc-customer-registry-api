@@ -19,7 +19,7 @@ describe('Query businessApplications', () => {
                   office
               }
               csClaim {
-                  schemeYear
+                  schemaYear
                   type
                   status
                   lastMovement
@@ -44,12 +44,12 @@ describe('Query businessApplications', () => {
               status: 'Withdrawn',
               type: expect.any(String),
               sector: null,
-              year: '2023',
+              year: 2023,
               frn: expect.any(String),
               office: null
             },
             csClaim: {
-              schemaYear: '2023',
+              schemaYear: 2023,
               type: expect.any(String),
               status: 'WTHDRW',
               lastMovement: expect.any(String)
@@ -62,12 +62,12 @@ describe('Query businessApplications', () => {
               status: 'Checking Application',
               type: expect.any(String),
               sector: 'STANDA',
-              year: '2023',
+              year: 2023,
               frn: expect.any(String),
               office: null
             },
             csClaim: {
-              schemaYear: '2023',
+              schemaYear: 2023,
               type: expect.any(String),
               status: 'AGROFF',
               lastMovement: expect.any(String)

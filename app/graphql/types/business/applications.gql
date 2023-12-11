@@ -4,13 +4,13 @@ type BusinessApplicationStatus {
   status: String
   type: String
   sector: String
-  year: String
+  year: Int
   frn: String
   office: String
 }
 
 type BusinessApplicationClaim {
-  schemeYear: String
+  schemaYear: Int
   type: String
   status: String
   lastMovement: String

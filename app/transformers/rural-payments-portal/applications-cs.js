@@ -1,11 +1,11 @@
 // CS stands for Countryside Stewardship
 export const transformOrganisationCSApplicationToBusinessApplications = data => {
   if (!data) {
-    return { applications: [] }
+    return []
   }
 
   if (data.length === 0) {
-    return { applications: [] }
+    return []
   }
 
   const result = []
@@ -31,5 +31,5 @@ export const transformOrganisationCSApplicationToBusinessApplications = data => 
       })
   }
 
-  return { applications: result }
+  return result
 }

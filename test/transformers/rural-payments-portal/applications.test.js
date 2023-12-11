@@ -9,7 +9,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
     const actual = systemUnderTest(null)
 
     test('it should return a JSON with applications field and an empty array', () => {
-      expect(actual).toEqual({ applications: [] })
+      expect(actual).toEqual([])
     })
   })
 
@@ -17,7 +17,7 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
     const actual = systemUnderTest(null)
 
     test('it should return a JSON with applications field and an empty array', () => {
-      expect(actual).toEqual({ applications: [] })
+      expect(actual).toEqual([])
     })
   })
 
@@ -52,46 +52,44 @@ describe('transformOrganisationCSApplicationToBusinessApplications Test', () => 
     ])
 
     test('it should return an enrich JSON with applications populated', () => {
-      expect(actual).toEqual({
-        applications: [
-          {
-            applicationStatus: {
-              id: 1648168,
-              open: null,
-              status: 'Withdrawn',
-              type: 'Countryside Stewardship (MT) Module 2023',
-              sector: null,
-              year: 2023,
-              frn: 0,
-              office: null
-            },
-            csClaim: {
-              schemaYear: 2023,
-              type: 'Countryside Stewardship (MT)',
-              status: 'WTHDRW',
-              lastMovement: '2023-08-17T10:38:49'
-            }
+      expect(actual).toEqual([
+        {
+          applicationStatus: {
+            id: 1648168,
+            open: null,
+            status: 'Withdrawn',
+            type: 'Countryside Stewardship (MT) Module 2023',
+            sector: null,
+            year: 2023,
+            frn: 0,
+            office: null
           },
-          {
-            applicationStatus: {
-              id: 1649461,
-              open: null,
-              status: 'Checking Application',
-              type: 'Countryside Stewardship (MT) Module 2023',
-              sector: 'STANDA',
-              year: 2023,
-              frn: 0,
-              office: null
-            },
-            csClaim: {
-              schemaYear: 2023,
-              type: 'Countryside Stewardship (MT)',
-              status: 'AGROFF',
-              lastMovement: '2023-09-20T14:21:36'
-            }
+          csClaim: {
+            schemaYear: 2023,
+            type: 'Countryside Stewardship (MT)',
+            status: 'WTHDRW',
+            lastMovement: '2023-08-17T10:38:49'
           }
-        ]
-      })
+        },
+        {
+          applicationStatus: {
+            id: 1649461,
+            open: null,
+            status: 'Checking Application',
+            type: 'Countryside Stewardship (MT) Module 2023',
+            sector: 'STANDA',
+            year: 2023,
+            frn: 0,
+            office: null
+          },
+          csClaim: {
+            schemaYear: 2023,
+            type: 'Countryside Stewardship (MT)',
+            status: 'AGROFF',
+            lastMovement: '2023-09-20T14:21:36'
+          }
+        }
+      ])
     })
   })
 })
