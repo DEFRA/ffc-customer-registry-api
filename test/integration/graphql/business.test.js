@@ -105,7 +105,7 @@ describe('Query.customer', () => {
 })
 
 describe('Query businessApplications', () => {
-  it('should bring expected data back', async () => {
+  it('should return application data', async () => {
     const result = await graphql({
       source: `#graphql
       query BusinessApplications {
@@ -137,44 +137,46 @@ describe('Query businessApplications', () => {
     })
 
     expect(result).toEqual({
-      data: [
-        {
-          applicationStatus: {
-            id: expect.any(Number),
-            open: null,
-            status: 'Withdrawn',
-            type: expect.any(String),
-            sector: null,
-            year: expect.any(Number),
-            frn: expect.any(Number),
-            office: null
+      data: {
+        businessApplications: [
+          {
+            applicationStatus: {
+              id: expect.any(Number),
+              open: null,
+              status: 'Withdrawn',
+              type: expect.any(String),
+              sector: null,
+              year: expect.any(Number),
+              frn: expect.any(Number),
+              office: null
+            },
+            csClaim: {
+              schemaYear: expect.any(Number),
+              type: expect.any(String),
+              status: 'WTHDRW',
+              lastMovement: expect.any(String)
+            }
           },
-          csClaim: {
-            schemaYear: expect.any(Number),
-            type: expect.any(String),
-            status: 'WTHDRW',
-            lastMovement: expect.any(String)
+          {
+            applicationStatus: {
+              id: expect.any(Number),
+              open: null,
+              status: 'Checking Application',
+              type: expect.any(String),
+              sector: 'STANDA',
+              year: expect.any(Number),
+              frn: expect.any(Number),
+              office: null
+            },
+            csClaim: {
+              schemaYear: expect.any(Number),
+              type: expect.any(String),
+              status: 'AGROFF',
+              lastMovement: expect.any(String)
+            }
           }
-        },
-        {
-          applicationStatus: {
-            id: expect.any(Number),
-            open: null,
-            status: 'Checking Application',
-            type: expect.any(String),
-            sector: 'STANDA',
-            year: expect.any(Number),
-            frn: expect.any(Number),
-            office: null
-          },
-          csClaim: {
-            schemaYear: expect.any(Number),
-            type: expect.any(String),
-            status: 'AGROFF',
-            lastMovement: expect.any(String)
-          }
-        }
-      ]
+        ]
+    },
     })
   })
 })
