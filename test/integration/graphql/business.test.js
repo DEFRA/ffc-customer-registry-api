@@ -74,9 +74,7 @@ describe('Query.customer', () => {
       }
     })
   })
-})
 
-describe('Query businessApplications', () => {
   it('should return application data', async () => {
     const result = await graphql({
       source: `#graphql
