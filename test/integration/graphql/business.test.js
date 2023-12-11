@@ -6,7 +6,7 @@ import { fakeContext } from '../../test-setup.js'
 import { transformOrganisationToBusiness } from '../../../app/transformers/rural-payments-portal/business.js'
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
 
-describe('Query.customer', () => {
+describe('Query.business', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
 
@@ -75,7 +75,7 @@ describe('Query.customer', () => {
     })
   })
 
-  it('should return application data', async () => {
+  it('should bring business application data', async () => {
     const result = await graphql({
       source: `#graphql
       query BusinessApplications {
