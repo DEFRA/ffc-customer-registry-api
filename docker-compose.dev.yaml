@@ -1,9 +1,6 @@
 services:
   ffc-customer-registry-api:
-    image: defra-node-dev:18
-    build:
-      context: .
-      dockerfile: dev.Dockerfile
+    image: node:18
     container_name: ffc-customer-registry-api-dev
     ports:
       - ${PORT}:${PORT}
@@ -15,9 +12,5 @@ services:
       RURAL_PAYMENTS_AGENCY_LAND_API_URL: https://environment.data.gov.uk
       RURAL_PAYMENTS_PORTAL_API_URL: http://localhost:3100/rpp/
       RURAL_PAYMENTS_PORTAL_EMAIL: some-email
-      NODE_ENV: development
-      ENABLE_MOCK_SERVER: true
-      PORT_MOCK: 3100
-      ADMIN_AD_GROUP_ID: ADGROUPID
     env_file:
       - .env
