@@ -1,7 +1,9 @@
 import {
-  transformOrganisationToBusiness,
   transformOrganisationCSApplicationToBusinessApplications
-} from '../../../transformers/rural-payments-portal'
+} from '../../../transformers/rural-payments-portal/applications-cs.js'
+import {
+  transformOrganisationToBusiness
+} from '../../../transformers/rural-payments-portal/business.js'
 
 export const Query = {
   async business (__, { id }, { dataSources }) {

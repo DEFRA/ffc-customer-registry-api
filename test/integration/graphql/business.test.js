@@ -4,9 +4,11 @@ import { schema } from '../../../app/graphql/server.js'
 import { fakeContext } from '../../test-setup.js'
 
 import {
-  transformOrganisationToBusiness,
+  transformOrganisationToBusiness
+} from '../../../app/transformers/rural-payments-portal/business.js'
+import {
   transformOrganisationCSApplicationToBusinessApplications
-} from '../../../app/transformers/rural-payments-portal'
+} from '../../../app/transformers/rural-payments-portal/applications-cs.js'
 import {
   organisation as organisationFixture,
   organisationCSApplications as organisationCSApplicationsFixture
