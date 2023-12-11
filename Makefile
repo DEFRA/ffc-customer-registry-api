@@ -1,6 +1,7 @@
 .PHONY: dev
 dev:
 	docker compose -f docker-compose.dev.yaml up
+
 token:
 	@curl -s -d "grant_type=client_credentials" \
 	-d "client_id=${CLIENT_ID}" \

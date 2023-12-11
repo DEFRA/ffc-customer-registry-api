@@ -1,6 +1,6 @@
 import { pagination } from '../../fixtures/pagination.js'
 import { organisationPersonSummary } from '../../fixtures/organisation-person-summary.js'
-import { organisation, organisationCSApplications, organisations } from '../../fixtures/organisation.js'
+import { organisation, organisations, organisationCSApplications } from '../../fixtures/organisation.js'
 
 export default [
   {
