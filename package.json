@@ -1,14 +1,14 @@
 {
   "name": "ffc-customer-registry-api",
-  "version": "1.0.22",
+  "version": "1.0.25",
   "description": "Customer Registry GraphQL Service",
   "homepage": "https://github.com/DEFRA/ffc-customer-registry-api",
   "main": "app/index.js",
   "type": "module",
   "scripts": {
-    "format:gql": "prettier 'app/graphql/types/**/*.gql' --write",
+    "format:gql": "prettier \"app/graphql/types/**/*.gql\" --write",
     "format:js": "standard --fix",
-    "lint:gql": "eslint 'app/graphql/types' && prettier 'app/graphql/types/**/*.gql' --check",
+    "lint:gql": "eslint \"app/graphql/types\" && prettier \"app/graphql/types/**/*.gql\" --check",
     "lint:js": "standard",
     "pretest": "npm run lint:js && npm run lint:gql",
     "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js",
@@ -34,6 +34,8 @@
     "applicationinsights": "2.8.0",
     "graphql": "16.8.1",
     "https-proxy-agent": "^7.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0",
     "tough-cookie": "^4.1.3",
     "winston": "^3.11.0"
   },
