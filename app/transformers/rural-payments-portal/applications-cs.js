@@ -1,15 +1,15 @@
 // CS stands for Countryside Stewardship
-export function transformOrganisationCSApplicationToBusinessApplications (applications) {
-  if (!applications) {
+export const transformOrganisationCSApplicationToBusinessApplications = data => {
+  if (!data) {
     return { applications: [] }
   }
 
-  if (applications.length === 0) {
+  if (data.length === 0) {
     return { applications: [] }
   }
 
   const result = []
-  for (const response in applications) {
+  for (const response in data) {
     result.push({
       applicationStatus: {
         id: response.application_id,

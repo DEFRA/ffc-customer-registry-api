@@ -6,7 +6,7 @@ import { ruralPaymentsPortalCustomerTransformer } from '../../../app/transformer
 import { person as personFixture } from '../../../mocks/fixtures/person.js'
 import {
   transformOrganisationCSApplicationToBusinessApplications
-} from '../../../app/transformers/rural-payments-portal/index.js'
+} from '../../../app/transformers/rural-payments-portal'
 import {
   organisationCSApplications as organisationCSApplicationsFixture
 } from '../../../mocks/fixtures/organisation.js'

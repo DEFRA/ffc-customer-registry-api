@@ -7,3 +7,7 @@ token:
 	-d "scope=api://${CLIENT_ID}/.default" \
 	-d "client_secret=${CLIENT_SECRET}" \
 	-X POST h"ttps://login.microsoftonline.com/${API_TENANT_ID}/oauth2/v2.0/token" | jq -r '.access_token'
+
+.PHONY: dev-tty
+dev-tty:
+	docker compose -f docker-compose.dev.yaml exec ffc-customer-registry-api bash

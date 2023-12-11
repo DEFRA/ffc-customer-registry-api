@@ -1,6 +1,9 @@
 services:
   ffc-customer-registry-api:
-    image: node:18
+    image: defra-node-dev:18
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
     container_name: ffc-customer-registry-api-dev
     ports:
       - ${PORT}:${PORT}
