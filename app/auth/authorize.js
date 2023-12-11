@@ -10,18 +10,10 @@ export class Authorize {
   }
 
   isAdmin () {
-    if (process.env.NODE_ENV === 'development') {
-      return true
-    }
-
     if (this.adGroups.includes(adGroupMapping.ADMIN)) return true
   }
 
   checkAuthGroup (groupName) {
-    if (process.env.NODE_ENV === 'development') {
-      return
-    }
-
     if (!this.isAdmin(this.adGroups) || !this.adGroups.includes(adGroupMapping[groupName])) {
       throw new Unauthorized('Authorization failed, you are not in the correct AD groups')
     }
