@@ -68,7 +68,7 @@ export default [
   },
   {
     id: 'rpp-organisation-applications-get-by-id',
-    url: 'rpp/injected-screens-mt/api/organisation/:orgId/applications/appslist',
+    url: '/rpp/injected-screens-mt/api/organisation/:orgId/applications/appslist',
     method: ['GET'],
     variants: [
       {

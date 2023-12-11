@@ -19,8 +19,6 @@ export const Query = {
   async businessApplications (_, { id }, { dataSources }) {
     const response = await dataSources.ruralPaymentsPortalApi.getApplicationsCountrysideStewardshipBySbi(id)
 
-    console.log('-----------------------response is', response)
-
     return transformOrganisationCSApplicationToBusinessApplications(response.applications)
   }
 }

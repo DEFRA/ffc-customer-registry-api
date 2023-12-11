@@ -23,6 +23,6 @@ export class RuralPaymentsPortalApi extends RuralPaymentsPortalBase {
 
   async getApplicationsCountrysideStewardshipBySbi (sbi) {
     const response = await this.get(`injected-screens-mt/api/organisation/${sbi}/applications/appslist`)
-    return response.data
+    return response._data
   }
 }
