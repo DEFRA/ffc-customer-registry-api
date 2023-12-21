@@ -22,3 +22,21 @@ export const Query = {
     return transformOrganisationCSApplicationToBusinessApplications(response.applications)
   }
 }
+
+export const CPH = async ({ id }, _, { dataSources }) => {
+  const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id)
+  // todo: finish transformers with unit tests
+
+  response.status = 'success'
+
+  return response
+}
+
+export const CPHInfo = async ({ id }, { cphNumber }, { dataSources }) => {
+  const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHInfoBySBIAndCPHNumber(id, cphNumber)
+  // todo: finish transformers with unit tests
+
+  response.status = 'success'
+
+  return response
+}
