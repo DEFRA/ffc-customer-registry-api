@@ -21,7 +21,7 @@ export default [
 
       'rpp-siti-agri-api-get-authorisation-by-organisation-id:default',
       'rpp-siti-agri-api-get-cph-for-organisation-by-id:default',
-      'rpp-siti-agri-api-get-cph-info-for-organisation-by-id:default',
+      'rpp-siti-agri-api-get-cph-info-for-organisation-by-id:default'
     ]
   }
 ]
