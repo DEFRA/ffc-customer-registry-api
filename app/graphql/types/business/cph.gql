@@ -1,0 +1,18 @@
+type CPHCoordinate {
+  x: Int
+  y: Int
+}
+
+type CPHInfo {
+    parish: String
+    startDate: String
+    expiryDate: Int
+    species: [String]
+    coordinate: CPHCoordinate
+}
+
+type CPH {
+  cphNumber: String
+  parcelNumbers: [String]
+  info: CPHInfo
+}

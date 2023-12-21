@@ -19,7 +19,9 @@ export default [
       'rpp-lms-get-land-covers:default',
       'rpp-lms-get-parcels:default',
 
-      'rpp-siti-agri-api-get-authorisation-by-organisation-id:default'
+      'rpp-siti-agri-api-get-authorisation-by-organisation-id:default',
+      'rpp-siti-agri-api-get-cph-for-organisation-by-id:default',
+      'rpp-siti-agri-api-get-cph-info-for-organisation-by-id:default',
     ]
   }
 ]
