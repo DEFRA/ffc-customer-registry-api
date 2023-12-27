@@ -83,6 +83,7 @@ describe('Query.customer', () => {
     })
 
     expect(result).toEqual({
+      // todo: assert cph data
       data: {
         business: JSON.parse(JSON.stringify(transformedOrganisation))
       }
