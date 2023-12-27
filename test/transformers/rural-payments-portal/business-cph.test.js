@@ -1,6 +1,6 @@
 import { transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
-describe('Test Business CPH Transformer',  () => {
+describe('Test Business CPH Transformer', () => {
   test('transformOrganisationCPHInfo', () => {
     const systemUnderTest = transformOrganisationCPHInfo
 
@@ -11,7 +11,7 @@ describe('Test Business CPH Transformer',  () => {
     test('given input parameter has coordinates X & Y, should enrich and transform to new data model', () => {
       expect(systemUnderTest({
         xCoordinate: 3123213,
-        yCoordinate: 1321442,
+        yCoordinate: 1321442
       })).toEqual({
         parish: null,
         startDate: null,
@@ -19,7 +19,7 @@ describe('Test Business CPH Transformer',  () => {
         species: null,
         coordinate: {
           x: 3123213,
-          y: 1321442,
+          y: 1321442
         }
       })
     })
@@ -31,8 +31,8 @@ describe('Test Business CPH Transformer',  () => {
         startDate: 1210806000000,
         expiryDate: 253402214400000,
         species: [
-        "OTHER"
-      ],
+          'OTHER'
+        ],
         xCoordinate: 429000,
         yCoordinate: 236000
       })).toEqual({
@@ -40,11 +40,11 @@ describe('Test Business CPH Transformer',  () => {
         startDate: 1210806000000,
         expiryDate: 253402214400000,
         species: [
-        "OTHER"
-      ],
+          'OTHER'
+        ],
         coordinate: {
           x: 429000,
-          y: 236000,
+          y: 236000
         }
       })
     })
