@@ -27,5 +27,5 @@ type Business {
   info: BusinessInfo
   land: Land
   applications: [BusinessApplication]
-  cph: CPH
+  cph: [CPH]
 }

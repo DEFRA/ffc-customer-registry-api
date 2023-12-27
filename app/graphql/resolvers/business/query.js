@@ -4,6 +4,7 @@ import {
 import {
   transformOrganisationToBusiness
 } from '../../../transformers/rural-payments-portal/business.js'
+import { transformOrganisationCPHInfo } from '../../../transformers/rural-payments-portal/business-cph.js'
 
 export const Query = {
   async business (__, { id }, { dataSources }) {
@@ -24,19 +25,11 @@ export const Query = {
 }
 
 export const CPH = async ({ id }, _, { dataSources }) => {
-  const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id)
-  // todo: finish transformers with unit tests
-
-  response.status = 'success'
-
-  return response
+  return await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id)
 }
 
 export const CPHInfo = async ({ id }, { cphNumber }, { dataSources }) => {
   const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHInfoBySBIAndCPHNumber(id, cphNumber)
-  // todo: finish transformers with unit tests
 
-  response.status = 'success'
-
-  return response
+  return transformOrganisationCPHInfo(response)
 }

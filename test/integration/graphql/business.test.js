@@ -58,6 +58,20 @@ describe('Query.customer', () => {
                 charityCommission
               }
             }
+            cph {
+              cphNumber
+              parcelNumbers
+              info {
+                parish
+                startDate
+                expiryDate
+                species
+                coordinate {
+                  x
+                  y
+                }
+              }
+            }
           }
         }
       `,
