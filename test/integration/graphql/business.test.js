@@ -5,10 +5,16 @@ import { fakeContext } from '../../test-setup.js'
 
 import { transformOrganisationToBusiness } from '../../../app/transformers/rural-payments-portal/business.js'
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
+import {
+  organisationCPH as organisationCPHFixture,
+  organisationCPHInfo as organisationCPHInfoFixture
+} from '../../../mocks/fixtures/organisation-cph.js'
+import { transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Query.customer', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
+    const transformedOrganisationCPHInfo = transformOrganisationCPHInfo(organisationCPHInfoFixture)
 
     const result = await graphql({
       source: `#graphql
@@ -83,9 +89,14 @@ describe('Query.customer', () => {
     })
 
     expect(result).toEqual({
-      // todo: assert cph data
       data: {
-        business: JSON.parse(JSON.stringify(transformedOrganisation))
+        business: {
+          ...JSON.parse(JSON.stringify(transformedOrganisation)),
+          cph: {
+            ...JSON.parse(JSON.stringify(organisationCPHFixture)),
+            info: transformedOrganisationCPHInfo
+          }
+        }
       }
     })
   })

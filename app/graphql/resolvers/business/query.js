@@ -28,7 +28,7 @@ export const CPH = async ({ id }, _, { dataSources }) => {
   return await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id)
 }
 
-export const CPHInfo = async ({ id }, { cphNumber }, { dataSources }) => {
+export const CPHInfo = async ({ id, cphNumber }, _, { dataSources }) => {
   const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHInfoBySBIAndCPHNumber(id, cphNumber)
 
   return transformOrganisationCPHInfo(response)
