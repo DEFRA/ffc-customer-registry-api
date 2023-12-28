@@ -94,7 +94,7 @@ describe('Query.customer', () => {
           ...JSON.parse(JSON.stringify(transformedOrganisation)),
           cph: {
             ...JSON.parse(JSON.stringify(organisationCPHFixture)),
-            info: transformedOrganisationCPHInfo
+            info: JSON.parse(JSON.stringify(transformedOrganisationCPHInfo)),
           }
         }
       }
