@@ -5,6 +5,7 @@ import { context } from '../../../app/graphql/context.js'
 
 describe('Query.customer without authorization header', () => {
   it('should return customer data', async () => {
+    process.env.NODE_ENV = 'production'
     const unAuthedContext = await context({})
     const result = await graphql({
       source: `#graphql
