@@ -16,8 +16,8 @@ const dataSources = {
 
 describe('Customer', () => {
   test('Customer.businesses', async () => {
-    const response = await Customer.businesses({ id: 'mockCustomerId' }, undefined, { dataSources })
-    expect(response).toEqual([{ id: '4309257', customerId: 'mockCustomerId' }])
+    const response = await Customer.businesses({ id: 'mockCustomerId', name: 'name', sbi: 123123123 }, undefined, { dataSources })
+    expect(response).toEqual([{ id: '4309257', name: 'name', sbi: 123123123, customerId: 'mockCustomerId' }])
   })
 })
 
