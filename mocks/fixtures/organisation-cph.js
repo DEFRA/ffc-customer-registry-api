@@ -17,6 +17,6 @@ export const organisationCPHInfo = {
   species: [
     faker.string.alphanumeric().toUpperCase()
   ],
-  xCoordinate: faker.number.int({ max: 121000, min: 216000 }),
+  xCoordinate: faker.number.int({ max: 216000, min: 116000 }),
   yCoordinate: faker.number.int({ max: 621000, min: 236000 })
 }
