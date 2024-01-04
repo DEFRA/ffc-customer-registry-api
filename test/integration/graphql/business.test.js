@@ -100,7 +100,8 @@ describe('Query.business', () => {
             parcelNumbers: [
               '3123123',
               '312312312'
-            ]
+            ],
+            info: null
           }]
         }
       }
