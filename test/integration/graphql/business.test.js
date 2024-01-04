@@ -68,7 +68,7 @@ describe('Query.business', () => {
               }
             }
             cph {
-              cphNumber
+              number
               parcelNumbers
               info {
                 parish
