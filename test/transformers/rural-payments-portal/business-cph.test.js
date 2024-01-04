@@ -35,10 +35,10 @@ describe('Test Business CPH Transformer', () => {
         xCoordinate: 3123213,
         yCoordinate: 1321442
       })).toEqual({
-        parish: null,
-        startDate: null,
-        expiryDate: null,
-        species: null,
+        parish: undefined,
+        startDate: undefined,
+        expiryDate: undefined,
+        species: undefined,
         coordinate: {
           x: 3123213,
           y: 1321442
