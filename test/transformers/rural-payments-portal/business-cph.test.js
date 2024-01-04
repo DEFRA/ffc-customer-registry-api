@@ -1,7 +1,7 @@
 import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Test Business CPH Transformer', () => {
-  test('transformOrganisationCPH', () => {
+  describe('transformOrganisationCPH', () => {
     const systemUnderTest = transformOrganisationCPH
 
     test('given input parameter is empty, should return null', () => {
@@ -23,7 +23,7 @@ describe('Test Business CPH Transformer', () => {
     })
   })
 
-  test('transformOrganisationCPHInfo', () => {
+  describe('transformOrganisationCPHInfo', () => {
     const systemUnderTest = transformOrganisationCPHInfo
 
     test('given input parameter is empty, should return null', () => {
