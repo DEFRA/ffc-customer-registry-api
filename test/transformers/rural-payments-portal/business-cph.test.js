@@ -1,6 +1,6 @@
 import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
-describe('Test Business CPH Transformer', () => {
+describe('Test Business CPHField Transformer', () => {
   describe('transformOrganisationCPH', () => {
     const systemUnderTest = transformOrganisationCPH
 

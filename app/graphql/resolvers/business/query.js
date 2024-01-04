@@ -4,7 +4,7 @@ import {
 import {
   transformOrganisationToBusiness
 } from '../../../transformers/rural-payments-portal/business.js'
-import { CPH } from './cph/query.js'
+import { CPHField } from './cph/query.js'
 
 export const Query = {
   async business (__, { id }, { dataSources }) {
@@ -14,7 +14,7 @@ export const Query = {
       id,
       land: { sbi: id },
       ...business,
-      cph: CPH
+      cph: CPHField(null, {id}, { dataSources })
     }
   },
 
