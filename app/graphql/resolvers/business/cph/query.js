@@ -3,7 +3,10 @@ import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../..
 export const CPH = async (_, { id }, { dataSources }) => {
   const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id)
 
-  return transformOrganisationCPH(response)
+  return {
+    ...transformOrganisationCPH(response),
+    info: CPHInfo
+  }
 }
 
 export const CPHInfo = async ({ cphNumber }, { id }, { dataSources }) => {
