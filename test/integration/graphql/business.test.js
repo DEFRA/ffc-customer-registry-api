@@ -5,13 +5,15 @@ import { fakeContext } from '../../test-setup.js'
 
 import { transformOrganisationToBusiness } from '../../../app/transformers/rural-payments-portal/business.js'
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
+import { landCovers, totalArea, totalParcels, coversSummary, landParcels } from '../../../mocks/fixtures/lms.js'
+import { transformLandCovers, transformLandCoversToArea, transformLandParcels } from '../../../app/transformers/rural-payments-portal/lms.js'
 import {
   organisationCPH as organisationCPHFixture,
   organisationCPHInfo as organisationCPHInfoFixture
 } from '../../../mocks/fixtures/organisation-cph.js'
 import { transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
-describe('Query.customer', () => {
+describe('Query.business', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
     const transformedOrganisationCPHInfo = transformOrganisationCPHInfo(organisationCPHInfoFixture)
@@ -95,6 +97,106 @@ describe('Query.customer', () => {
           cph: {
             ...JSON.parse(JSON.stringify(organisationCPHFixture)),
             info: JSON.parse(JSON.stringify(transformedOrganisationCPHInfo))
+          }
+        }
+      }
+    })
+  })
+})
+
+describe('Query.business.land', () => {
+  it('summary', async () => {
+    const result = await graphql({
+      source: `#graphql
+        query BusinessLandSummary {
+          business(id: "ID") {
+            land {
+              summary {
+                totalParcels
+                totalArea
+                arableLandArea
+                permanentCropsArea
+                permanentGrasslandArea
+              }
+            }
+          }
+        }
+      `,
+      schema,
+      contextValue: fakeContext
+    })
+
+    expect(result).toEqual({
+      data: {
+        business: {
+          land: {
+            summary: {
+              arableLandArea: transformLandCoversToArea('Arable Land', coversSummary),
+              permanentCropsArea: transformLandCoversToArea('Permanent Crops', coversSummary),
+              permanentGrasslandArea: transformLandCoversToArea('Permanent Grassland', coversSummary),
+              totalArea,
+              totalParcels
+            }
+          }
+        }
+      }
+    })
+  })
+
+  it('parcels', async () => {
+    const result = await graphql({
+      source: `#graphql
+        query BusinessLandParcels {
+          business(id: "ID") {
+            land {
+              parcels {
+                id
+                sheetId
+                area
+              }
+            }
+          }
+        }
+      `,
+      schema,
+      contextValue: fakeContext
+    })
+
+    expect(result).toEqual({
+      data: {
+        business: {
+          land: {
+            parcels: transformLandParcels(landParcels)
+          }
+        }
+      }
+    })
+  })
+
+  it('covers', async () => {
+    const result = await graphql({
+      source: `#graphql
+        query BusinessLandCovers {
+          business(id: "ID") {
+            land {
+              covers {
+                id
+                name
+                area
+              }
+            }
+          }
+        }
+      `,
+      schema,
+      contextValue: fakeContext
+    })
+
+    expect(result).toEqual({
+      data: {
+        business: {
+          land: {
+            covers: transformLandCovers(landCovers)
           }
         }
       }

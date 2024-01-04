@@ -25,7 +25,7 @@ type BusinessType {
 type Business {
   id: ID!
   info: BusinessInfo
-  land: Land
+  land: BusinessLand
   applications: [BusinessApplication]
   cph: [CPH]
 }
