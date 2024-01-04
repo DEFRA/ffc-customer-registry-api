@@ -5,13 +5,16 @@ export const CPHField = async (_, { id }, { dataSources }) => {
   const transformedResponse = transformOrganisationCPH(response)
 
   return {
-    ...transformedResponse,
+    number: '3213223',
+    parcelNumbers: [
+      'ssssss'
+    ],
     info: CPHInfoField(transformedResponse, { id }, { dataSources })
   }
 }
 
 export const CPHInfoField = async ({ number }, { id }, { dataSources }) => {
-  const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHInfoBySBIAndCPHNumber(id, number)
+  // const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHInfoBySBIAndCPHNumber(id, number)
 
-  return transformOrganisationCPHInfo(response)
+  return null
 }
