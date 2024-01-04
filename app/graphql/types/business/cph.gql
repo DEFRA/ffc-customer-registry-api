@@ -4,11 +4,11 @@ type CPHCoordinate {
 }
 
 type CPHInfo {
-    parish: String
-    startDate: String
-    expiryDate: Int
-    species: [String]
-    coordinate: CPHCoordinate
+  parish: String
+  startDate: String
+  expiryDate: Int
+  species: [String]
+  coordinate: CPHCoordinate
 }
 
 type CPH {
