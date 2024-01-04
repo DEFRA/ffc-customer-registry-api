@@ -11,11 +11,12 @@ import {
   organisationCPH as organisationCPHFixture,
   organisationCPHInfo as organisationCPHInfoFixture
 } from '../../../mocks/fixtures/organisation-cph.js'
-import { transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
+import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Query.business', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
+    const transformedOrganisationCPH = transformOrganisationCPH(organisationCPHFixture)
     const transformedOrganisationCPHInfo = transformOrganisationCPHInfo(organisationCPHInfoFixture)
 
     const result = await graphql({
@@ -95,7 +96,7 @@ describe('Query.business', () => {
         business: {
           ...JSON.parse(JSON.stringify(transformedOrganisation)),
           cph: {
-            ...JSON.parse(JSON.stringify(organisationCPHFixture)),
+            ...JSON.parse(JSON.stringify(transformedOrganisationCPH)),
             info: JSON.parse(JSON.stringify(transformedOrganisationCPHInfo))
           }
         }

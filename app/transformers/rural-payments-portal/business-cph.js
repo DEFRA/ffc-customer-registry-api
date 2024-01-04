@@ -1,3 +1,14 @@
+export function transformOrganisationCPH (data) {
+  if (!data) {
+    return null
+  }
+
+  return {
+    number: data.cphNumber,
+    parcelNumbers: data.parcelNumbers
+  }
+}
+
 export function transformOrganisationCPHInfo (data) {
   if (!data) {
     return null

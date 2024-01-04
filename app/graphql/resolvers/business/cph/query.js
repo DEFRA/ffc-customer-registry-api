@@ -1,7 +1,9 @@
-import { transformOrganisationCPHInfo } from '../../../../transformers/rural-payments-portal/business-cph.js'
+import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../../transformers/rural-payments-portal/business-cph.js'
 
 export const CPH = async (_, { id }, { dataSources }) => {
-  return await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id)
+  const response = await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id)
+
+  return transformOrganisationCPH(response)
 }
 
 export const CPHInfo = async ({ cphNumber }, { id }, { dataSources }) => {

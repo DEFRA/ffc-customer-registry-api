@@ -12,7 +12,7 @@ type CPHInfo {
 }
 
 type CPH {
-  cphNumber: String
+  number: String
   parcelNumbers: [String]
   info: CPHInfo
 }
