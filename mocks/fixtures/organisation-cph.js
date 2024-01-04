@@ -1,13 +1,13 @@
 import { faker } from '@faker-js/faker/locale/en_GB'
 
-export const organisationCPH = {
+export const organisationCPH = [{
   cphNumber: faker.string.alphanumeric(),
   parcelNumbers: [
     faker.string.alphanumeric(),
     faker.string.alphanumeric(),
     faker.string.alphanumeric()
   ]
-}
+}]
 
 export const organisationCPHInfo = {
   cphNumber: faker.string.alphanumeric(),
