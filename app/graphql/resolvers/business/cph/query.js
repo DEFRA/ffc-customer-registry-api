@@ -6,7 +6,7 @@ export const CPHField = async (_, { id }, { dataSources }) => {
 
   return {
     ...transformedResponse,
-    info: CPHInfoField(transformedResponse, { id }, { dataSources})
+    info: CPHInfoField(transformedResponse, { id }, { dataSources })
   }
 }
 

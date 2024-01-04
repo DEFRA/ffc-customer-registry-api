@@ -14,7 +14,7 @@ export const Query = {
       id,
       land: { sbi: id },
       ...business,
-      cph: CPHField(null, {id}, { dataSources })
+      cph: CPHField(null, { id }, { dataSources })
     }
   },
 
