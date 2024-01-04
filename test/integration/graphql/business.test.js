@@ -7,17 +7,17 @@ import { transformOrganisationToBusiness } from '../../../app/transformers/rural
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
 import { landCovers, totalArea, totalParcels, coversSummary, landParcels } from '../../../mocks/fixtures/lms.js'
 import { transformLandCovers, transformLandCoversToArea, transformLandParcels } from '../../../app/transformers/rural-payments-portal/lms.js'
-import {
-  organisationCPH as organisationCPHFixture,
-  organisationCPHInfo as organisationCPHInfoFixture
-} from '../../../mocks/fixtures/organisation-cph.js'
-import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
+// import {
+//   organisationCPH as organisationCPHFixture,
+//   organisationCPHInfo as organisationCPHInfoFixture
+// } from '../../../mocks/fixtures/organisation-cph.js'
+// import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Query.business', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
-    const transformedOrganisationCPH = transformOrganisationCPH(organisationCPHFixture)
-    const transformedOrganisationCPHInfo = transformOrganisationCPHInfo(organisationCPHInfoFixture)
+    // const transformedOrganisationCPH = transformOrganisationCPH(organisationCPHFixture)
+    // const transformedOrganisationCPHInfo = transformOrganisationCPHInfo(organisationCPHInfoFixture)
 
     const result = await graphql({
       source: `#graphql
@@ -95,10 +95,13 @@ describe('Query.business', () => {
       data: {
         business: {
           ...JSON.parse(JSON.stringify(transformedOrganisation)),
-          cph: {
-            ...JSON.parse(JSON.stringify(transformedOrganisationCPH)),
-            info: JSON.parse(JSON.stringify(transformedOrganisationCPHInfo))
-          }
+          cph: [{
+            number: '32131312',
+            parcelNumbers: [
+              '3123123',
+              '312312312'
+            ]
+          }]
         }
       }
     })
