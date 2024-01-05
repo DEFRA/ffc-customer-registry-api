@@ -26,18 +26,12 @@ export const Query = {
 
   async businessCPH ({ id }, _, { dataSources }) {
     return transformOrganisationCPH(
-      [{
-        cphNumber: '32131312',
-        parcelNumbers: [
-          '3123123',
-          '312312312'
-        ]
-      }],
+      await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id),
       this.businessCPHInfo
     )
   },
 
-  async businessCPHInfo ({ id }, _, { dataSources }) {
+  async businessCPHInfo ({ id }, payload, { dataSources }) {
     return null
   }
 }
