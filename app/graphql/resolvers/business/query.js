@@ -29,7 +29,12 @@ export const Query = {
       parcelNumbers: [
         '3123123',
         '312312312'
-      ]
+      ],
+      info: this.businessCPHInfo
     }]
+  },
+
+  async businessCPHInfo ({ id }, _, { dataSources }) {
+    return null
   }
 }
