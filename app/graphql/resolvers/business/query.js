@@ -23,7 +23,7 @@ export const Query = {
     return transformOrganisationCSApplicationToBusinessApplications(response.applications)
   },
 
-  async businessCPH({ id }, _, { dataSources}) {
+  async businessCPH ({ id }, _, { dataSources }) {
     return [{
       number: '32131312',
       parcelNumbers: [
