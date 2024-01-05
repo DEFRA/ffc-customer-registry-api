@@ -25,7 +25,7 @@ export const Query = {
   },
 
   async businessCPH ({ id }, _, { dataSources }) {
-    transformOrganisationCPH(
+    return transformOrganisationCPH(
       [{
         number: '32131312',
         parcelNumbers: [
