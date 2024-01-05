@@ -13,13 +13,7 @@ export const Query = {
       id,
       land: { sbi: id },
       ...business,
-      cph: [{
-        number: '32131312',
-        parcelNumbers: [
-          '3123123',
-          '312312312'
-        ]
-      }]
+      cph: this.businessCPH
     }
   },
 
@@ -27,5 +21,15 @@ export const Query = {
     const response = await dataSources.ruralPaymentsPortalApi.getApplicationsCountrysideStewardshipBySbi(id)
 
     return transformOrganisationCSApplicationToBusinessApplications(response.applications)
+  },
+
+  async businessCPH({ id }, _, { dataSources}) {
+    return [{
+      number: '32131312',
+      parcelNumbers: [
+        '3123123',
+        '312312312'
+      ]
+    }]
   }
 }
