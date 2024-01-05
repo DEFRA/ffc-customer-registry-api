@@ -4,6 +4,7 @@ import {
 import {
   transformOrganisationToBusiness
 } from '../../../transformers/rural-payments-portal/business.js'
+import { transformOrganisationCPH } from '../../../transformers/rural-payments-portal/business-cph.js'
 
 export const Query = {
   async business (__, { id }, { dataSources }) {
@@ -24,14 +25,16 @@ export const Query = {
   },
 
   async businessCPH ({ id }, _, { dataSources }) {
-    return [{
-      number: '32131312',
-      parcelNumbers: [
-        '3123123',
-        '312312312'
-      ],
-      info: this.businessCPHInfo
-    }]
+    transformOrganisationCPH(
+      [{
+        number: '32131312',
+        parcelNumbers: [
+          '3123123',
+          '312312312'
+        ]
+      }],
+      this.businessCPHInfo
+    )
   },
 
   async businessCPHInfo ({ id }, _, { dataSources }) {

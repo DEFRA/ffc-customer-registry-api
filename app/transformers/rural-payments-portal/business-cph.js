@@ -1,12 +1,18 @@
-export function transformOrganisationCPH (data) {
+export function transformOrganisationCPH (data, infoFieldResolver) {
   if (!data) {
     return null
   }
 
-  return {
-    number: data.cphNumber,
-    parcelNumbers: data.parcelNumbers
+  const result = []
+  for (const record of data) {
+    result.push({
+      number: record.cphNumber,
+      parcelNumbers: record.parcelNumbers,
+      info: infoFieldResolver
+    })
   }
+
+  return result
 }
 
 export function transformOrganisationCPHInfo (data) {
