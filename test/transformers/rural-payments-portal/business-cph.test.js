@@ -4,12 +4,16 @@ describe('Test Business CPHField Transformer', () => {
   describe('transformOrganisationCPH', () => {
     const systemUnderTest = transformOrganisationCPH
 
-    test('given input parameter is empty, should return null', () => {
+    test('given input parameter for id is empty, should return null', () => {
       expect(systemUnderTest(null)).toEqual(null)
     })
 
+    test('given input parameter for data is empty, should return null', () => {
+      expect(systemUnderTest('mockId', null)).toEqual(null)
+    })
+
     test('given input is populated with all the fields, should enrich and transform to new data model', () => {
-      expect(systemUnderTest([{
+      expect(systemUnderTest('id', [{
         cphNumber: '43/060/0025',
         parcelNumbers: [
           'SP2936 2318'
