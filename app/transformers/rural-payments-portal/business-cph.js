@@ -9,8 +9,10 @@ export function transformOrganisationCPH (id, data) {
 
   const result = []
   for (const record of data) {
+    const { cphNumber } = record
+
     result.push({
-      number: record.cphNumber,
+      number: cphNumber,
       parcelNumbers: record.parcelNumbers,
 
       async parish (_, { dataSources }) {
@@ -18,7 +20,7 @@ export function transformOrganisationCPH (id, data) {
           .ruralPaymentsPortalApi
           .getOrganisationCPHInfoBySBIAndCPHNumber(
             id,
-            record.cphNumber
+            cphNumber
           )
 
         return response.parish
@@ -29,7 +31,7 @@ export function transformOrganisationCPH (id, data) {
           .ruralPaymentsPortalApi
           .getOrganisationCPHInfoBySBIAndCPHNumber(
             id,
-            record.cphNumber
+            cphNumber
           )
 
         return response.startDate
@@ -40,7 +42,7 @@ export function transformOrganisationCPH (id, data) {
           .ruralPaymentsPortalApi
           .getOrganisationCPHInfoBySBIAndCPHNumber(
             id,
-            record.cphNumber
+            cphNumber
           )
 
         return response.expiryDate
@@ -51,7 +53,7 @@ export function transformOrganisationCPH (id, data) {
           .ruralPaymentsPortalApi
           .getOrganisationCPHInfoBySBIAndCPHNumber(
             id,
-            record.cphNumber
+            cphNumber
           )
 
         return response.species
@@ -62,7 +64,7 @@ export function transformOrganisationCPH (id, data) {
           .ruralPaymentsPortalApi
           .getOrganisationCPHInfoBySBIAndCPHNumber(
             id,
-            record.cphNumber
+            cphNumber
           )
 
         return {

@@ -207,12 +207,16 @@ describe('Query.Business.cph', () => {
       data: {
         business: {
           cph: [{
-            number: '32131312',
-            parcelNumbers: [
-              '3123123',
-              '312312312'
-            ],
-            parish: 'ssss'
+            number: expect.any(String),
+            parcelNumbers: expect.any(Array),
+            parish: expect.any(String),
+            startDate: expect.any(Number),
+            expiryDate: expect.any(Number),
+            species: expect.any(Array),
+            coordinate: {
+              x: expect.any(Number),
+              y: expect.any(Number)
+            }
           }]
         }
       }

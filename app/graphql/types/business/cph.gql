@@ -7,7 +7,7 @@ type CPH {
   number: String
   parcelNumbers: [String]
   parish: String
-  startDate: String
+  startDate: Int
   expiryDate: Int
   species: [String]
   coordinate: CPHCoordinate
