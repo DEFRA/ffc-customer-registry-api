@@ -3,16 +3,12 @@ type CPHCoordinate {
   y: Int
 }
 
-type CPHInfo {
+type CPH {
+  number: String
+  parcelNumbers: [String]
   parish: String
   startDate: String
   expiryDate: Int
   species: [String]
   coordinate: CPHCoordinate
-}
-
-type CPH {
-  number: String
-  parcelNumbers: [String]
-  info: CPHInfo
 }

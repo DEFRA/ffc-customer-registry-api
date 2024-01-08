@@ -9,17 +9,17 @@ describe('Test Business CPHField Transformer', () => {
     })
 
     test('given input is populated with all the fields, should enrich and transform to new data model', () => {
-      expect(systemUnderTest({
+      expect(systemUnderTest([{
         cphNumber: '43/060/0025',
         parcelNumbers: [
           'SP2936 2318'
         ]
-      })).toEqual({
+      }])).toEqual([{
         number: '43/060/0025',
         parcelNumbers: [
           'SP2936 2318'
         ]
-      })
+      }])
     })
   })
 

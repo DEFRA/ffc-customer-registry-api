@@ -4,7 +4,6 @@ import {
 import {
   transformOrganisationToBusiness
 } from '../../../transformers/rural-payments-portal/business.js'
-import { transformOrganisationCPH } from '../../../transformers/rural-payments-portal/business-cph.js'
 
 export const Query = {
   async business (__, { id }, { dataSources }) {
@@ -13,8 +12,7 @@ export const Query = {
     return {
       id,
       land: { sbi: id },
-      ...business,
-      cph: this.businessCPH
+      ...business
     }
   },
 
@@ -22,16 +20,5 @@ export const Query = {
     const response = await dataSources.ruralPaymentsPortalApi.getApplicationsCountrysideStewardshipBySbi(id)
 
     return transformOrganisationCSApplicationToBusinessApplications(response.applications)
-  },
-
-  async businessCPH ({ id }, _, { dataSources }) {
-    return transformOrganisationCPH(
-      await dataSources.ruralPaymentsPortalApi.getOrganisationCPHCollectionBySBI(id),
-      this.businessCPHInfo
-    )
-  },
-
-  async businessCPHInfo ({ id }, payload, { dataSources }) {
-    return null
   }
 }

@@ -7,17 +7,10 @@ import { transformOrganisationToBusiness } from '../../../app/transformers/rural
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
 import { landCovers, totalArea, totalParcels, coversSummary, landParcels } from '../../../mocks/fixtures/lms.js'
 import { transformLandCovers, transformLandCoversToArea, transformLandParcels } from '../../../app/transformers/rural-payments-portal/lms.js'
-// import {
-//   organisationCPH as organisationCPHFixture,
-//   organisationCPHInfo as organisationCPHInfoFixture
-// } from '../../../mocks/fixtures/organisation-cph.js'
-// import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Query.business', () => {
   it('should return business data', async () => {
     const transformedOrganisation = transformOrganisationToBusiness(organisationFixture)
-    // const transformedOrganisationCPH = transformOrganisationCPH(organisationCPHFixture)
-    // const transformedOrganisationCPHInfo = transformOrganisationCPHInfo(organisationCPHInfoFixture)
 
     const result = await graphql({
       source: `#graphql
@@ -67,20 +60,6 @@ describe('Query.business', () => {
                 charityCommission
               }
             }
-            cph {
-              number
-              parcelNumbers
-              info {
-                parish
-                startDate
-                expiryDate
-                species
-                coordinate {
-                  x
-                  y
-                }
-              }
-            }
           }
         }
       `,
@@ -93,17 +72,7 @@ describe('Query.business', () => {
 
     expect(result).toEqual({
       data: {
-        business: {
-          ...JSON.parse(JSON.stringify(transformedOrganisation)),
-          cph: [{
-            number: '32131312',
-            parcelNumbers: [
-              '3123123',
-              '312312312'
-            ],
-            info: null
-          }]
-        }
+        business: JSON.parse(JSON.stringify(transformedOrganisation))
       }
     })
   })
@@ -203,6 +172,48 @@ describe('Query.business.land', () => {
           land: {
             covers: transformLandCovers(landCovers)
           }
+        }
+      }
+    })
+  })
+})
+
+describe('Query.Business.cph', () => {
+  it('cph', async () => {
+    const result = await graphql({
+      source: `#graphql
+      query BusinessCPH {
+        business(id: "ID") {
+          cph {
+            number
+            parcelNumbers
+            parish
+            startDate
+            expiryDate
+            species
+            coordinate {
+              x
+              y
+            }
+          }
+        }
+      }
+      `,
+      schema,
+      contextValue: fakeContext
+    })
+
+    expect(result).toEqual({
+      data: {
+        business: {
+          cph: [{
+            number: '32131312',
+            parcelNumbers: [
+              '3123123',
+              '312312312'
+            ],
+            parish: 'ssss'
+          }]
         }
       }
     })
