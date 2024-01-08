@@ -22,7 +22,12 @@ describe('Test Business CPHField Transformer', () => {
         number: '43/060/0025',
         parcelNumbers: [
           'SP2936 2318'
-        ]
+        ],
+        coordinate: expect.any(Function),
+        startDate: expect.any(Function),
+        expiryDate: expect.any(Function),
+        parish: expect.any(Function),
+        species: expect.any(Function),
       }])
     })
   })
