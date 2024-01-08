@@ -27,7 +27,7 @@ describe('Test Business CPHField Transformer', () => {
         startDate: expect.any(Function),
         expiryDate: expect.any(Function),
         parish: expect.any(Function),
-        species: expect.any(Function),
+        species: expect.any(Function)
       }])
     })
   })
