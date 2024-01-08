@@ -177,3 +177,49 @@ describe('Query.business.land', () => {
     })
   })
 })
+
+describe('Query.Business.cph', () => {
+  it('cph', async () => {
+    const result = await graphql({
+      source: `#graphql
+      query BusinessCPH {
+        business(id: "ID") {
+          cph {
+            number
+            parcelNumbers
+            parish
+            startDate
+            expiryDate
+            species
+            coordinate {
+              x
+              y
+            }
+          }
+        }
+      }
+      `,
+      schema,
+      contextValue: fakeContext
+    })
+
+    expect(result).toEqual({
+      data: {
+        business: {
+          cph: [{
+            number: expect.any(String),
+            parcelNumbers: expect.any(Array),
+            parish: expect.any(String),
+            startDate: expect.any(Number),
+            expiryDate: expect.any(Number),
+            species: expect.any(Array),
+            coordinate: {
+              x: expect.any(Number),
+              y: expect.any(Number)
+            }
+          }]
+        }
+      }
+    })
+  })
+})
