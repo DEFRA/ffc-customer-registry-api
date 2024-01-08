@@ -8,12 +8,10 @@ export function transformOrganisationCPH (id, data) {
   }
 
   const result = []
-  for (const record of data) {
-    const { cphNumber } = record
-
+  for (const { cphNumber, parcelNumbers } of data) {
     result.push({
       number: cphNumber,
-      parcelNumbers: record.parcelNumbers,
+      parcelNumbers,
 
       async parish (_, { dataSources }) {
         const response = await dataSources

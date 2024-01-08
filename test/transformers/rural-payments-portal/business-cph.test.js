@@ -1,4 +1,4 @@
-import { transformOrganisationCPH, transformOrganisationCPHInfo } from '../../../app/transformers/rural-payments-portal/business-cph.js'
+import { transformOrganisationCPH } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Test Business CPHField Transformer', () => {
   describe('transformOrganisationCPH', () => {
