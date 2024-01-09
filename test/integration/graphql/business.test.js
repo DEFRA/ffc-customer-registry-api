@@ -184,6 +184,9 @@ describe('Query.business.land', () => {
 })
 
 describe('Query.Business.cph', () => {
+  const transformedCPH = transformOrganisationCPH('ID', organisationCPHFixture)
+  delete transformedCPH[0].id
+
   it('cph', async () => {
     const result = await graphql({
       source: `#graphql
@@ -213,12 +216,7 @@ describe('Query.Business.cph', () => {
         business: {
           cph: [
             {
-              ...(() => {
-                if (Array.isArray(transformOrganisationCPH('ID', organisationCPHFixture))) {
-                  return transformOrganisationCPH('ID', organisationCPHFixture)[0]
-                }
-                return {}
-              })(),
+              ...transformedCPH[0],
               parish: organisationCPHInfoFixture.parish,
               species: organisationCPHInfoFixture.species,
               startDate: organisationCPHInfoFixture.startDate,
