@@ -223,7 +223,6 @@ describe('Query.Business.cph', () => {
                 x: organisationCPHInfoFixture.xCoordinate
               }
             }
-
           ]
         }
       }
