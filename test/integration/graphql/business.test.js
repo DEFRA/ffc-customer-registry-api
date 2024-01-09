@@ -7,6 +7,11 @@ import { transformOrganisationToBusiness } from '../../../app/transformers/rural
 import { organisation as organisationFixture } from '../../../mocks/fixtures/organisation.js'
 import { landCovers, totalArea, totalParcels, coversSummary, landParcels } from '../../../mocks/fixtures/lms.js'
 import { transformLandCovers, transformLandCoversToArea, transformLandParcels } from '../../../app/transformers/rural-payments-portal/lms.js'
+import {
+  organisationCPH as organisationCPHFixture,
+  organisationCPHInfo as organisationCPHInfoFixture
+} from '../../../mocks/fixtures/organisation-cph.js'
+import { transformOrganisationCPH } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Query.business', () => {
   it('should return business data', async () => {
@@ -207,15 +212,14 @@ describe('Query.Business.cph', () => {
       data: {
         business: {
           cph: [{
-            number: expect.any(String),
-            parcelNumbers: expect.any(Array),
-            parish: expect.any(String),
-            startDate: expect.any(Number),
-            expiryDate: expect.any(Number),
-            species: expect.any(Array),
+            ...transformOrganisationCPH(organisationCPHFixture),
+            parish: organisationCPHInfoFixture.parish,
+            startDate: organisationCPHInfoFixture.startDate,
+            expiryDate: organisationCPHInfoFixture.expiryDate,
+            species: organisationCPHInfoFixture.species,
             coordinate: {
-              x: expect.any(Number),
-              y: expect.any(Number)
+              x: organisationCPHInfoFixture.xCoordinate,
+              y: organisationCPHInfoFixture.yCoordinate
             }
           }]
         }
