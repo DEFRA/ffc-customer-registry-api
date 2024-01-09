@@ -213,7 +213,13 @@ describe('Query.Business.cph', () => {
         business: {
           cph: [
             {
-              ...transformOrganisationCPH(organisationCPHFixture)[0],
+              ...(() => {
+                if (Array.isArray(transformOrganisationCPH(organisationCPHFixture))) {
+                  return transformOrganisationCPH(organisationCPHFixture)[0]
+                }
+
+                return {}
+              })(),
               parish: organisationCPHInfoFixture.parish,
               species: organisationCPHInfoFixture.species,
               startDate: organisationCPHInfoFixture.startDate,
