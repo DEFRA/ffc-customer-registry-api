@@ -217,7 +217,6 @@ describe('Query.Business.cph', () => {
                 if (Array.isArray(transformOrganisationCPH(organisationCPHFixture))) {
                   return transformOrganisationCPH(organisationCPHFixture)[0]
                 }
-
                 return {}
               })(),
               parish: organisationCPHInfoFixture.parish,
