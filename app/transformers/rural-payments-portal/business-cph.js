@@ -7,5 +7,9 @@ export function transformOrganisationCPH (id, data) {
     return null
   }
 
-  return data.map(({ cphNumber, ...rest }) => ({ id, number: cphNumber, ...rest }))
+  return data.map(({ cphNumber, parcelNumbers }) => ({
+    id,
+    number: cphNumber,
+    parcelNumbers
+  }))
 }
