@@ -8,8 +8,7 @@ import { organisation as organisationFixture } from '../../../mocks/fixtures/org
 import { landCovers, totalArea, totalParcels, coversSummary, landParcels } from '../../../mocks/fixtures/lms.js'
 import { transformLandCovers, transformLandCoversToArea, transformLandParcels } from '../../../app/transformers/rural-payments-portal/lms.js'
 import {
-  organisationCPH as organisationCPHFixture,
-  organisationCPHInfo as organisationCPHInfoFixture
+  organisationCPH as organisationCPHFixture
 } from '../../../mocks/fixtures/organisation-cph.js'
 import { transformOrganisationCPH } from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
@@ -211,17 +210,7 @@ describe('Query.Business.cph', () => {
     expect(result).toEqual({
       data: {
         business: {
-          cph: [{
-            ...transformOrganisationCPH(organisationCPHFixture),
-            parish: organisationCPHInfoFixture.parish,
-            startDate: organisationCPHInfoFixture.startDate,
-            expiryDate: organisationCPHInfoFixture.expiryDate,
-            species: organisationCPHInfoFixture.species,
-            coordinate: {
-              x: organisationCPHInfoFixture.xCoordinate,
-              y: organisationCPHInfoFixture.yCoordinate
-            }
-          }]
+          cph: transformOrganisationCPH(organisationCPHFixture)
         }
       }
     })
