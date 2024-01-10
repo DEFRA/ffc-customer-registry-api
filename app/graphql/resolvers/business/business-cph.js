@@ -1,3 +1,5 @@
+import { transformOrganisationCPHCoordinates } from '../../../transformers/rural-payments-portal/business-cph.js'
+
 export const CPH = {
   async parish ({ id, number }, _, { dataSources }) {
     const response = await dataSources
@@ -51,9 +53,6 @@ export const CPH = {
         number
       )
 
-    return {
-      x: response.xCoordinate,
-      y: response.yCoordinate
-    }
+    return transformOrganisationCPHCoordinates(response)
   }
 }

@@ -13,3 +13,14 @@ export function transformOrganisationCPH (id, data) {
     parcelNumbers
   }))
 }
+
+export function transformOrganisationCPHCoordinates (data) {
+  if (!data) {
+    return null
+  }
+
+  return {
+    y: data.yCoordinate,
+    x: data.xCoordinate
+  }
+}
