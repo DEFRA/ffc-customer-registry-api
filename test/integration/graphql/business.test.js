@@ -11,7 +11,10 @@ import {
   organisationCPHInfo as organisationCPHInfoFixture,
   organisationCPH as organisationCPHFixture
 } from '../../../mocks/fixtures/organisation-cph.js'
-import { transformOrganisationCPH } from '../../../app/transformers/rural-payments-portal/business-cph.js'
+import {
+  transformOrganisationCPH,
+  transformOrganisationCPHCoordinates
+} from '../../../app/transformers/rural-payments-portal/business-cph.js'
 
 describe('Query.business', () => {
   it('should return business data', async () => {
@@ -221,10 +224,9 @@ describe('Query.Business.cph', () => {
               species: organisationCPHInfoFixture.species,
               startDate: organisationCPHInfoFixture.startDate,
               expiryDate: organisationCPHInfoFixture.expiryDate,
-              coordinate: {
-                y: organisationCPHInfoFixture.yCoordinate,
-                x: organisationCPHInfoFixture.xCoordinate
-              }
+              coordinate: transformOrganisationCPHCoordinates(
+                organisationCPHInfoFixture
+              )
             }
           ]
         }
