@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en_GB'
 
-export const organisationPersonSummary = {
-  id: '4309257',
+const factory = (attributes = {}) => ({
+  id: faker.string.numeric(9),
   name: faker.company.name(),
   sbi: parseInt(faker.string.numeric(9)),
   additionalSbiIds: [],
@@ -11,5 +11,8 @@ export const organisationPersonSummary = {
   deactivated: faker.datatype.boolean(),
   locked: faker.datatype.boolean(),
   unreadNotificationCount: 3,
-  readNotificationCount: 0
-}
+  readNotificationCount: 0,
+  ...attributes
+})
+
+export const organisationPersonSummarys = [factory(), factory(), factory()]

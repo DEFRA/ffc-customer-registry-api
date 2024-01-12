@@ -1,5 +1,5 @@
 import { pagination } from '../../fixtures/pagination.js'
-import { organisationPersonSummary } from '../../fixtures/organisation-person-summary.js'
+import { organisationPersonSummarys } from '../../fixtures/organisation-person-summary.js'
 import { organisation, organisations, organisationCSApplications } from '../../fixtures/organisation.js'
 
 export default [
@@ -10,10 +10,17 @@ export default [
     variants: [
       {
         id: 'default',
-        type: 'json',
+        type: 'middleware',
         options: {
-          status: 200,
-          body: { _data: organisation }
+          middleware: (req, res) => {
+            const found = organisations.find(organisation => organisation.id === req.params.orgId)
+            res.setHeader('Content-Type', 'application/json')
+            res.end(
+              JSON.stringify({
+                _data: found || organisation
+              })
+            )
+          }
         }
       }
     ]
@@ -60,7 +67,7 @@ export default [
         options: {
           status: 200,
           body: {
-            _data: [organisationPersonSummary]
+            _data: organisations
           }
         }
       }
