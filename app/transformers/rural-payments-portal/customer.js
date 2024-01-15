@@ -61,7 +61,7 @@ export function transformPersonSummaryToCustomerAuthorisedBusinesses (customerId
   }))
 }
 
-export function transformNotificationsToMessages (notifications = [], showOnlyDeleted) {
+export function transformNotificationsToMessages (notifications = [], showOnlyDeleted = false) {
   return notifications
     .map((message) => ({
       id: message.id,

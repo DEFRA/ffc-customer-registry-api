@@ -86,4 +86,9 @@ describe('Customer transformer', () => {
       }
     ])
   })
+
+  test('transformNotificationsToMessages does not fail if messages empty', () => {
+    const result = transformNotificationsToMessages()
+    expect(result).toEqual([])
+  })
 })
