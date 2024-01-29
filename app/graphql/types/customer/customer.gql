@@ -39,6 +39,11 @@ type CustomerBusiness {
   name: String!
   sbi: Int!
   roles: [String]
-  privileges: [String]
   messages(pagination: Pagination, showOnlyDeleted: Boolean): [CustomerBusinessMessage]
+  permissionGroups: [CustomerBusinessPermissionGroup]
+}
+
+type CustomerBusinessPermissionGroup {
+  id: PermissionGroupId
+  level: PermissionLevel
 }

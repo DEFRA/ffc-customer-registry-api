@@ -21,6 +21,11 @@ export class RuralPaymentsPortalApi extends RuralPaymentsPortalBase {
     return response.data
   }
 
+  async getAuthorisationByOrganisationIdAndPersonId (organisationId, personId) {
+    const response = await this.get(`/rpp/SitiAgriApi/authorisation/organisation/${organisationId}/authorisation`, { headers: { callerID: personId } })
+    return response.data.personPrivileges
+  }
+
   async getApplicationsCountrysideStewardshipBySbi (sbi) {
     const response = await this.get(`injected-screens-mt/api/organisation/${sbi}/applications/appslist`)
     return response._data

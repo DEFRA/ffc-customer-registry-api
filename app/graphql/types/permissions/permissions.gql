@@ -1,0 +1,30 @@
+enum PermissionLevel {
+  NO_ACCESS
+  VIEW
+  AMEND
+  SUBMIT
+  MAKE_LEGAL_CHANGES
+  FULL_PERMISSION
+}
+
+enum PermissionGroupId {
+  BASIC_PAYMENT_SCHEME
+  BUSINESS_DETAILS
+  COUNTRYSIDE_STEWARDSHIP_AGREEMENTS
+  COUNTRYSIDE_STEWARDSHIP_APPLICATIONS
+  ENTITLEMENTS
+  ENVIRONMENTAL_LAND_MANAGEMENT_APPLICATIONS
+  LAND_DETAILS
+}
+
+type PermissionGroup {
+  id: PermissionGroupId!
+  name: String!
+  permissions: [Permission]
+}
+
+type Permission {
+  level: PermissionLevel
+  functions: [String]
+  active(customerId: String!, businessId: String!): Boolean
+}
