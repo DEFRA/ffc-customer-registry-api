@@ -8,14 +8,40 @@ export default [
     url: '/rpp/api/organisation/:orgId',
     method: ['GET'],
     variants: [
-      {
-        id: 'default',
-        type: 'json',
-        options: {
-          status: 200,
-          body: { _data: organisation }
+      (function () {
+        if (process.env.MOCK_LEVEL === 'full') {
+          return {
+            id: 'default',
+            type: 'json',
+            options: {
+              status: 200,
+              body: { _data: organisation }
+            }
+          }
         }
-      }
+
+        return {
+          id: 'dynamic-org-mock-id',
+          type: 'middleware',
+          options: {
+            middleware: async (req, res) => {
+              const filteredOrganisations = await import('./../../samples/organisation.json')
+                .filter(v => v.id === req.params.orgId)
+
+              if (filteredOrganisations.length() !== 1) {
+                res.status(404)
+
+                return
+              }
+
+              res.status(200)
+              res.send({
+                _data: await import('./../../samples/organisation.json').filter(v => v.id === req.params.orgId)[0]
+              })
+            }
+          }
+        }
+      })()
     ]
   },
   {

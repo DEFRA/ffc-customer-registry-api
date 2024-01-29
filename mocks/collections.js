@@ -9,6 +9,7 @@ export default [
       'rpp-authenticate-get-expire-user-session:default',
 
       'rpp-organisation-get-by-id:default',
+      'rpp-organisation-get-by-id:dynamic-org-mock-id',
       'rpp-organisation-get-by-sbi:default',
       'rpp-organisation-get-person-summary-by-person-id:default',
       'rpp-organisation-applications-get-by-id:default',
