@@ -36,7 +36,7 @@ export default [
 
               res.status(200)
               res.send({
-                _data: await import('./../../samples/organisation.json').filter(v => v.id === req.params.orgId)[0]
+                _data: filteredOrganisations[0]
               })
             }
           }
