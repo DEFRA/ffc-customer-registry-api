@@ -30,7 +30,8 @@ const dataSources = {
     },
     getAuthorisationByOrganisationIdAndPersonId () {
       return sitiAgriApiAuthorisationOrganisation.personPrivileges
-    }
+    },
+    getNotificationsByOrganisationIdAndPersonId: jest.fn()
   },
   permissions: {
     getPermissionGroups () {
