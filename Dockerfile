@@ -29,5 +29,6 @@ EXPOSE ${PORT}
 COPY --from=development /home/node/mocks/ ./mocks/
 COPY --from=development /home/node/app/ ./app/
 COPY --from=development /home/node/package*.json ./
+COPY --from=development /home/node/auth-test-sql.js ./
 RUN npm ci
 CMD [ "node", "app" ]
