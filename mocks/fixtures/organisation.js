@@ -45,60 +45,9 @@ export const organisation = {
   companiesHouseRegistrationNumber: null,
   charityCommissionRegistrationNumber: null,
   customers: [
-    {
-      id: '7353104',
-      firstName: faker.person.firstName(),
-      lastName: faker.person.lastName(),
-      customerReference: '6577447946',
-      role: 'Business Partner',
-      privileges: [
-        'Full permission - business',
-        'Amend - land',
-        'Amend - entitlement',
-        'Submit - bps',
-        'AMEND - LAND - SA'
-      ]
-    },
-    {
-      id: '5158039',
-      firstName: faker.person.firstName(),
-      lastName: faker.person.lastName(),
-      customerReference: '3576141057',
-      role: 'Business Partner',
-      privileges: [
-        'Amend - land',
-        'Submit - bps'
-      ]
-    },
-    {
-      id: '4511292',
-      firstName: faker.person.firstName(),
-      lastName: faker.person.lastName(),
-      customerReference: '6332229670',
-      role: 'Business Partner',
-      privileges: [
-        'Full permission - business',
-        'Amend - land',
-        'Amend - entitlement',
-        'Submit - bps',
-        'SUBMIT - BPS - SA',
-        'AMEND - ENTITLEMENT - SA',
-        'AMEND - LAND - SA'
-      ]
-    },
-    {
-      id: '4147551',
-      firstName: faker.person.firstName(),
-      lastName: faker.person.lastName(),
-      customerReference: '8695546513',
-      role: 'Business Partner',
-      privileges: [
-        'Full permission - business',
-        'SUBMIT - BPS - SA',
-        'AMEND - ENTITLEMENT - SA',
-        'AMEND - LAND - SA'
-      ]
-    }
+    '4147551',
+    '7353104',
+    '5158039',
   ]
 }
 
