@@ -13,12 +13,12 @@ export const Customer = {
 }
 
 export const CustomerBusiness = {
-  async roles ({ id, customerId }, __, { dataSources }) {
-    const authorisation = await dataSources.ruralPaymentsPortalApi.getAuthorisationByOrganisationId(id)
+  async roles ({ id, customerId, sbi }, __, { dataSources }) {
+    const authorisation = await dataSources.ruralPaymentsPortalApi.getAuthorisationByOrganisationId(sbi)
     return transformPersonRolesToCustomerAuthorisedBusinessesRoles(customerId, authorisation.personRoles)
   },
 
-  async messages ({ id, customerId }, { pagination, showOnlyDeleted }, { dataSources }) {
+  async messages ({ id, customerId, sbi }, { pagination, showOnlyDeleted }, { dataSources }) {
     const notifications = await dataSources.ruralPaymentsPortalApi.getNotificationsByOrganisationIdAndPersonId(
       id,
       customerId,
@@ -29,14 +29,14 @@ export const CustomerBusiness = {
     return transformNotificationsToMessages(notifications, showOnlyDeleted)
   },
 
-  async permissionGroups ({ id, customerId }, __, { dataSources }) {
-    return dataSources.permissions.getPermissionGroups().map(permissionGroup => ({ ...permissionGroup, businessId: id, customerId }))
+  async permissionGroups ({ id, customerId, sbi }, __, { dataSources }) {
+    return dataSources.permissions.getPermissionGroups().map(permissionGroup => ({ ...permissionGroup, businessId: sbi, customerId }))
   }
 }
 
 export const CustomerBusinessPermissionGroup = {
-  async level ({ businessId, customerId, permissions }, __, { dataSources }) {
-    const authorisation = await dataSources.ruralPaymentsPortalApi.getAuthorisationByOrganisationIdAndPersonId(businessId, customerId)
+  async level ({ businessId, customerId, permissions, sbi }, __, { dataSources }) {
+    const authorisation = await dataSources.ruralPaymentsPortalApi.getAuthorisationByOrganisationIdAndPersonId(sbi, customerId)
     return transformOrganisationAuthorisationToCustomerBusinessPermissionLevel(permissions, authorisation)
   }
 
